@@ -1,7 +1,15 @@
 #include <iostream>
 #include <fstream>
+#include <random>
 
 using namespace std;
+
+int numero_aleatorio(int max,int min){
+    uniform_int_distribution<int> randomDist(min, max);
+    random_device rd;
+    mt19937 randomNumbers(rd());
+    return randomDist(randomNumbers);
+}
 
 void criaLista()
 {
@@ -10,13 +18,23 @@ void criaLista()
     //arquivo.open("vestibular.txt",ios::app);
     arquivo.open("vestibular.txt");
 
+    arquivo << "nº inscrição   |  Idade | Pontuação | Curso Pretendido";
+    arquivo << "\n";
     for (int i = 1; i <= 10; i++)
     {
-        string nome = "oiiii";
+        int registro = i;
+        int idade = numero_aleatorio(30,17);
+        int pontuacao = numero_aleatorio(5000,0);
+        int curso = numero_aleatorio(6,1);
 
-        arquivo << i;
-        arquivo << " - ";
-        arquivo << nome;
+        arquivo << "\t ";
+        arquivo << registro;
+        arquivo << "\t- ";
+        arquivo << idade;
+        arquivo << " \t ";
+        arquivo << pontuacao;
+        arquivo << "\t\tcurso ";
+        arquivo << curso;
         arquivo << "\n";
     }
 

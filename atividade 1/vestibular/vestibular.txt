@@ -1,10 +1,11 @@
-1 - oiiii
-2 - oiiii
-3 - oiiii
-4 - oiiii
-5 - oiiii
-6 - oiiii
-7 - oiiii
-8 - oiiii
-9 - oiiii
-10 - oiiii
+nº inscrição   |  Idade | Pontuação | Curso Pretendido
+	 1	- 20 	 2324		curso 2
+	 2	- 20 	 3243		curso 3
+	 3	- 28 	 4245		curso 6
+	 4	- 18 	 3898		curso 2
+	 5	- 28 	 277		curso 4
+	 6	- 25 	 1531		curso 3
+	 7	- 19 	 1276		curso 5
+	 8	- 23 	 3962		curso 4
+	 9	- 19 	 3404		curso 2
+	 10	- 30 	 1961		curso 5
