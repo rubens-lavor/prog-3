@@ -13,13 +13,14 @@ int numero_aleatorio(int max,int min){
 
 void criaLista()
 {
-    ofstream arquivo;
+    ofstream arquivo; //inserção no arquivo
 
     //arquivo.open("vestibular.txt",ios::app);
     arquivo.open("vestibular.txt");
 
     arquivo << "nº inscrição   |  Idade | Pontuação | Curso Pretendido";
     arquivo << "\n";
+
     for (int i = 1; i <= 10; i++)
     {
         int registro = i;
@@ -28,7 +29,7 @@ void criaLista()
         int curso = numero_aleatorio(6,1);
 
         arquivo << "\t ";
-        arquivo << registro;
+        arquivo << registro << " " <<i;
         arquivo << "\t- ";
         arquivo << idade;
         arquivo << " \t ";
@@ -45,7 +46,7 @@ int main()
 {
     criaLista();
 
-    ifstream arquivoEntrada;
+    ifstream arquivoEntrada; //lê o arquivo
     string linha;
     arquivoEntrada.open("vestibular.txt");
     if (arquivoEntrada.is_open())
@@ -54,6 +55,7 @@ int main()
         {
             cout << linha << endl;
         }
+        arquivoEntrada.close();
     }
     else
     {
