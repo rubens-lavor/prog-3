@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <random>
+#include <cstdlib>
+
 
 using namespace std;
 
@@ -12,6 +14,66 @@ int numero_aleatorio(int max, int min)
     return randomDist(randomNumbers);
 }
 
+int busca_numero(char *vetor_de_busca, int pos_contra_barra, int qtde_pos, int pos_inicio)
+{
+
+    int milhar = 0;
+    int centena = 0;
+    int dezena = 0;
+    int unidade = 0;
+
+
+    if (qtde_pos == 2) //idade ou curso
+    {
+        dezena = vetor_de_busca[pos_contra_barra + pos_inicio + 0];
+        unidade = vetor_de_busca[pos_contra_barra + pos_inicio + 1];
+
+        return (dezena - 48) * 10 + (unidade - 48);
+    }
+
+    if (qtde_pos == 4) //nota
+    {
+        milhar = vetor_de_busca[pos_contra_barra + pos_inicio + 0]; //pos_inicio = 15
+        centena = vetor_de_busca[pos_contra_barra + pos_inicio + 1];
+        dezena = vetor_de_busca[pos_contra_barra + pos_inicio + 2];
+        unidade = vetor_de_busca[pos_contra_barra + pos_inicio + 3];
+
+        if (unidade == 10 || dezena == 10 || centena == 10) //tratamento para nota > 1000
+        {
+            cout << " Opa! estamos no if que trata nota<1000 " << endl;
+            if (centena == 10)
+            {
+                unidade = milhar;
+                cout << " nota com 1 dígito " << endl;
+                return unidade - 48;
+            }
+            else if (dezena == 10)
+            {
+                unidade = centena;
+                dezena = milhar;
+                cout << " nota com 2 dígitos " << endl;
+                return (dezena - 48) * 10 + (unidade - 48);
+            }
+            else
+            {
+
+                unidade = dezena;
+                dezena = centena;
+                centena = milhar;
+                cout << " nota com 3 dígitos " << endl;
+                return (centena - 48) * 100 + (dezena - 48) * 10 + (unidade - 48);
+            }
+        }
+        else
+        {
+            return (milhar - 48) * 1000 + (centena - 48) * 100 + (dezena - 48) * 10 + (unidade - 48);
+        }
+    }
+
+    return -2;
+
+}
+
 void criaLista()
 {
     ofstream arquivo; //inserção no arquivo
@@ -19,16 +81,17 @@ void criaLista()
     //arquivo.open("vestibular.txt",ios::app);
     arquivo.open("vestibular.txt");
 
-    arquivo << "nº inscrição|\tIdade|\tCurso Pretendido|\tPontuação";
-    arquivo << "\n";
+    //arquivo << "nº inscrição|\tIdade|\tCurso Pretendido|\tPontuação";
+    //arquivo << "\n";
 
-    for (int i = 1; i <= 1; i++)
+    for (int i = 1; i <= 3; i++)
     {
         int registro = 1000 + i;
         int idade = numero_aleatorio(30, 17);
         int pontuacao = numero_aleatorio(5000, 0);
         int curso = numero_aleatorio(16, 11);
 
+        arquivo << "\n";
         arquivo << "\t";
         arquivo << registro;
         arquivo << "\t";
@@ -37,31 +100,42 @@ void criaLista()
         arquivo << curso;
         arquivo << "\t\t";
         arquivo << pontuacao;
-        arquivo << "F";
-        arquivo << "\n";
+        //arquivo << "F";
     }
+
+    arquivo << "\n";
+    arquivo << "-1";
 
     arquivo.close();
 }
 
 int main()
 {
-    criaLista();
 
-    char vetor_de_busca[500]{};
+    char vetor_de_busca[500] = {};
     int posicao = 0;
     int caractere_por_linha = 0;
     int contra_barra = 0;
 
     char vetor_de_linha_e_pontuacao[2] = {};
 
+    int vetor_nota_registro_idade_curso[12] = {};
+
+    int vetor_pos_contra_barra[10] = {};
+
+    int pos_contra_barra = 0;
+
+    criaLista();
+
     ifstream arquivoEntrada; //lê o arquivo
     string linha[4] = {};
     arquivoEntrada.open("vestibular.txt");
+
     if (arquivoEntrada.is_open())
     {
         //while (getline(arquivoEntrada, linha)){cout << linha << endl;}
 
+        int cont = 0;
         while (!arquivoEntrada.eof())
         {
             /* code */
@@ -76,6 +150,8 @@ int main()
             else
             {
                 contra_barra += 1;
+                vetor_pos_contra_barra[cont] = posicao;
+                cont += 1;
             }
 
             posicao += 1;
@@ -94,14 +170,6 @@ int main()
     cout << "caracteres " << caractere_por_linha << endl;
     cout << "contra barra " << contra_barra << endl;
     cout << vetor_de_busca << endl;
-    /*
-    posicao = 0;
-    while (vetor_de_busca[posicao] != '-1')
-    {
-        cout << vetor_de_busca[posicao];
-        posicao += 1;
-    }
-    */
 
     for (int i = 0; i < 4; i++)
     {
@@ -109,41 +177,66 @@ int main()
         linha[i] = vetor_de_busca[i + 68];
     }
     cout << endl;
-    int milhar = vetor_de_busca[68] - 48;
-    int centena = vetor_de_busca[69] -48;
-    int dezena = vetor_de_busca[70] -48;
-    int unidade = vetor_de_busca[71] -48;
-    //int teste_F = vetor_de_busca[72]; ----> OK!
+
     int nota = 0;
+    int registro = 0;
+    int idade = 0;
+    int curso = 0;
 
-    /* ok!!!
+    for (int i = 0; i < 12; i+=4)
+    {
+        nota = busca_numero(vetor_de_busca, vetor_pos_contra_barra[0], 4, 15);
+        registro = busca_numero(vetor_de_busca, vetor_pos_contra_barra[0], 4, 2);
+        idade = busca_numero(vetor_de_busca, vetor_pos_contra_barra[0], 2, 7);
+        curso = busca_numero(vetor_de_busca, vetor_pos_contra_barra[0], 2, 11);
 
-    if(vetor_de_busca[72]=='F'){
-        cout << "Ok é isso aí, fim de linha" << endl;
+        vetor_nota_registro_idade_curso[i] = nota;
+        vetor_nota_registro_idade_curso[i+1] = registro;
+        vetor_nota_registro_idade_curso[i+2] = idade;
+        vetor_nota_registro_idade_curso[i+3] = curso;
     }
+    
+    /*
+    int nota = busca_numero(vetor_de_busca, vetor_pos_contra_barra[0], 4, 15);
+    int nota2 = busca_numero(vetor_de_busca, vetor_pos_contra_barra[1], 4, 15);
+    int nota3 = busca_numero(vetor_de_busca, vetor_pos_contra_barra[2], 4, 15);
+
+    int registro = busca_numero(vetor_de_busca, vetor_pos_contra_barra[0], 4, 2);
+    int registro2 = busca_numero(vetor_de_busca, vetor_pos_contra_barra[1], 4, 2);
+    int registro3 = busca_numero(vetor_de_busca, vetor_pos_contra_barra[2], 4, 2);
+    
+    int idade = busca_numero(vetor_de_busca, vetor_pos_contra_barra[0], 2, 7);
+    int idade2 = busca_numero(vetor_de_busca, vetor_pos_contra_barra[1], 2, 7);
+    int idade3 = busca_numero(vetor_de_busca, vetor_pos_contra_barra[2], 2, 7);
+
+    int curso = busca_numero(vetor_de_busca, vetor_pos_contra_barra[0], 2, 11);
+    int curso2 = busca_numero(vetor_de_busca, vetor_pos_contra_barra[1], 2, 11);
+    int curso3 = busca_numero(vetor_de_busca, vetor_pos_contra_barra[2], 2, 11);
     
     */
-    
-    if (unidade == 70 || dezena == 70 ||centena == 70)
-    {
-        
-        unidade = dezena;
-        dezena = centena;
-        centena = milhar;
-        milhar = 0;
-    }
-    else
-    {
-        nota = milhar * 1000 + centena * 100 + dezena * 10 + unidade;
-    }
 
-    cout << " milhar " << milhar << endl;
-    cout << " centena " << centena << endl;
-    cout << " dezena " << dezena << endl;
-    cout << " unidade " << unidade << endl;
-    cout << " nota " << nota << endl;
+    cout << endl;
 
-    //cout << " F " << teste_F << endl;
+    cout << " nota 1 " << nota;
+    cout << "\t idade 1 " << idade;
+    cout << "\t curso " << curso;
+    cout << "\t registro 1 " << registro << endl;
+
+    cout << " nota 2 " << nota2;
+    cout << "\t idade 2 " << idade2;
+    cout << "\t curso " << curso2;
+    cout << "\t registro 2 " << registro2 << endl;
+
+    cout << " nota 3 " << nota3;
+    cout << "\t idade 3 " << idade3;
+    cout << "\t curso " << curso3;
+    cout << "\t registro 3 " << registro3 << endl;
+
+
+    cout << " vetor_pos_contra_barra[0] " << vetor_pos_contra_barra[0] << endl;
+    cout << " vetor_pos_contra_barra[1] " << vetor_pos_contra_barra[1] << endl;
+    cout << " vetor_pos_contra_barra[2] " << vetor_pos_contra_barra[2] << endl;
+
 
     return 0;
 }

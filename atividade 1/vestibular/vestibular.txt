@@ -1,2 +1,5 @@
-nº inscrição|	Idade|	Curso Pretendido|	Pontuação
-	1001	30		16		4786F
+
+	1001	25		16		4982
+	1002	23		12		623
+	1003	17		12		2386
+-1
