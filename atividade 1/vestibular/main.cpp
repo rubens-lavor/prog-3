@@ -2,7 +2,7 @@
 #include <fstream>
 #include <random>
 #include <cstdlib>
-
+//#include <cmath>
 
 using namespace std;
 
@@ -21,7 +21,6 @@ int busca_numero(char *vetor_de_busca, int pos_contra_barra, int qtde_pos, int p
     int centena = 0;
     int dezena = 0;
     int unidade = 0;
-
 
     if (qtde_pos == 2) //idade ou curso
     {
@@ -71,7 +70,6 @@ int busca_numero(char *vetor_de_busca, int pos_contra_barra, int qtde_pos, int p
     }
 
     return -2;
-
 }
 
 void criaLista()
@@ -109,6 +107,74 @@ void criaLista()
     arquivo.close();
 }
 
+void ordena(int *vet, int *vet_guarda_posicao)
+{
+
+    int maior[2];
+    //int auxmaior;
+    int posicao[2];
+    //int auxpos;
+    bool troca;
+    int aux[2];
+    //int aux2 = 0;
+
+
+    for (int i = 0; i < 6; i+=2)
+    {
+        troca = false;
+        maior[0] = vet[i];
+        posicao[0] = i;
+        
+
+        
+
+        for (int j = i + 2; j < 6; j+=2)
+        {
+
+            if (vet[j] > maior[0])
+            {
+
+                maior[0] = vet[j];
+                maior[1] = vet[j+1];
+                posicao[0] = j;
+                posicao[1] = j+1;
+                troca = true;
+
+            }
+            
+            
+            
+            
+        }
+
+        if (troca)
+        {
+
+            aux[0] = vet[i];
+            aux[1] = vet[i+1];
+
+            vet[i] = maior[0];
+            vet[i+1] = maior[1];
+
+            vet[posicao[0]] = aux[0];
+            vet[posicao[1]] = aux[1];
+
+        }
+        
+        
+        
+    
+    }
+
+    cout << endl;
+    cout << endl;
+
+    for (int i = 0; i < 6; i++)
+    {
+
+        cout << vet[i] << endl;
+    }
+}
 int main()
 {
 
@@ -123,7 +189,13 @@ int main()
 
     int vetor_pos_contra_barra[10] = {};
 
+    int vetor_manobra[6] = {};
+
     int pos_contra_barra = 0;
+
+    int vet_guarda_posicao[4] = {};
+
+    
 
     criaLista();
 
@@ -182,20 +254,54 @@ int main()
     int registro = 0;
     int idade = 0;
     int curso = 0;
+    int indice = 0;
 
-    for (int i = 0; i < 12; i+=4)
+    for (int i = 0; i < 3; i++)
     {
-        nota = busca_numero(vetor_de_busca, vetor_pos_contra_barra[0], 4, 15);
-        registro = busca_numero(vetor_de_busca, vetor_pos_contra_barra[0], 4, 2);
-        idade = busca_numero(vetor_de_busca, vetor_pos_contra_barra[0], 2, 7);
-        curso = busca_numero(vetor_de_busca, vetor_pos_contra_barra[0], 2, 11);
+        nota = busca_numero(vetor_de_busca, vetor_pos_contra_barra[i], 4, 15);
+        registro = busca_numero(vetor_de_busca, vetor_pos_contra_barra[i], 4, 2);
+        idade = busca_numero(vetor_de_busca, vetor_pos_contra_barra[i], 2, 7);
+        curso = busca_numero(vetor_de_busca, vetor_pos_contra_barra[i], 2, 11);
 
-        vetor_nota_registro_idade_curso[i] = nota;
-        vetor_nota_registro_idade_curso[i+1] = registro;
-        vetor_nota_registro_idade_curso[i+2] = idade;
-        vetor_nota_registro_idade_curso[i+3] = curso;
+        indice = i * 4;
+        //cout <<"resultado de indice"<< indice << endl;
+
+        vetor_nota_registro_idade_curso[indice] = nota;
+        vetor_nota_registro_idade_curso[indice + 1] = registro;
+        vetor_nota_registro_idade_curso[indice + 2] = idade;
+        vetor_nota_registro_idade_curso[indice + 3] = curso;
+
+        vetor_manobra[i*2] = nota;
+        vetor_manobra[i*2+1] = registro;
+
+        cout << "nota: " << vetor_nota_registro_idade_curso[indice];
+        cout << "\tregistro: " << vetor_nota_registro_idade_curso[indice + 1];
+        cout << "\tidade: " << vetor_nota_registro_idade_curso[indice + 2];
+        cout << "\tcurso " << vetor_nota_registro_idade_curso[indice + 3] << endl;
+
+
     }
-    
+
+    cout << endl;
+
+    for (int i = 0; i < 12; i++)
+    {
+
+        cout << vetor_nota_registro_idade_curso[i] << " - ";
+    }
+
+    cout << endl;
+    cout << endl;
+
+    for (int i = 0; i < 6; i++)
+    {
+
+        cout << vetor_manobra[i] << endl;
+    }
+
+    //ordenar
+    ordena(vetor_manobra, vet_guarda_posicao);
+
     /*
     int nota = busca_numero(vetor_de_busca, vetor_pos_contra_barra[0], 4, 15);
     int nota2 = busca_numero(vetor_de_busca, vetor_pos_contra_barra[1], 4, 15);
@@ -217,11 +323,14 @@ int main()
 
     cout << endl;
 
+    /*
+
     cout << " nota 1 " << nota;
     cout << "\t idade 1 " << idade;
     cout << "\t curso " << curso;
     cout << "\t registro 1 " << registro << endl;
-
+    
+    
     cout << " nota 2 " << nota2;
     cout << "\t idade 2 " << idade2;
     cout << "\t curso " << curso2;
@@ -231,12 +340,11 @@ int main()
     cout << "\t idade 3 " << idade3;
     cout << "\t curso " << curso3;
     cout << "\t registro 3 " << registro3 << endl;
-
+    */
 
     cout << " vetor_pos_contra_barra[0] " << vetor_pos_contra_barra[0] << endl;
     cout << " vetor_pos_contra_barra[1] " << vetor_pos_contra_barra[1] << endl;
     cout << " vetor_pos_contra_barra[2] " << vetor_pos_contra_barra[2] << endl;
-
 
     return 0;
 }
