@@ -137,6 +137,7 @@ void destroi_Pilha (TipoPilha *Pilha, TipoItem *Item){
     while (Pilha->Topo->Prox != NULL){
         Desempilhar(Pilha,Item); 
     }
+
 }
 
 int Menu()

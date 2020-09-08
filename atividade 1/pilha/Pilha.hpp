@@ -8,19 +8,19 @@ using namespace std;
 
 typedef struct Celula *Apontador; //apontador refere-se a celula no main
 
-typedef struct TipoItem
+struct TipoItem
 {
     int Codigo;
     char Nome[10];
 };
 
-typedef struct Celula 
+struct Celula 
 {
     TipoItem Item;
     Apontador Prox;
 };
 
-typedef struct TipoPilha
+struct TipoPilha
 {
     Apontador Topo;
     Apontador Fundo;

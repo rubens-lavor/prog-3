@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 int main()
 {
 
@@ -63,8 +62,7 @@ int main()
         Opcao = Menu();
     }
 
-    destroi_Pilha(&Pilha,&aux);
+    destroi_Pilha(&Pilha, &aux);
 
     return 0;
 }
-
