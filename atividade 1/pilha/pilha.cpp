@@ -157,6 +157,12 @@ void imprime_Pilha(TipoPilha *Pilha, TipoItem *Item)
     free(Q);
 }
 
+void destroi_Pilha (TipoPilha *Pilha, TipoItem *Item){
+    while (Pilha->Topo->Prox != NULL){
+        Desempilhar(Pilha,Item); 
+    }
+}
+
 int Menu()
 {
     int Opcao = 5;
@@ -236,7 +242,7 @@ int main()
         Opcao = Menu();
     }
 
-    cout << "Saiu" << endl;
+    destroi_Pilha(&Pilha,&aux);
     return 0;
 }
 
