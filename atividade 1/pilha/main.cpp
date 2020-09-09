@@ -1,12 +1,16 @@
 #include <iostream>
 #include <cstdlib>
+#include <memory>
 
-#include "Pilha.cpp"
+//#include "Pilha.cpp"
+#include "Pilha.hpp"
 
 using namespace std;
 
 int main()
 {
+
+    
 
     TipoPilha Pilha; /*Cria uma pilha*/
     TipoItem aux;

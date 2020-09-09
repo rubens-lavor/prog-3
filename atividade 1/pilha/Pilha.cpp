@@ -1,4 +1,6 @@
 #include "Pilha.hpp"
+#include <iostream>
+#include <cstdlib>
 
 void InicializaPilhaVazia(TipoPilha *Pilha)
 {
@@ -36,6 +38,8 @@ int Empilhar(TipoItem X, TipoPilha *Pilha)
     Pilha->Topo = aux;
     Pilha->tamanho++;
 
+    //free(aux);
+
     return 1;
 }
 
@@ -49,7 +53,8 @@ int Desempilhar(TipoPilha *Pilha, TipoItem *Item)
 
     if (PilhaVazia(*Pilha))
     {
-        cout << "\nERRO - Pilha está vazia!";
+        cout << "\n Pilha está vazia!";
+        //Pilha->Topo=NULL;
         Item->Codigo = -1;
         return 0;
     }
@@ -71,22 +76,6 @@ int TamanhoPilha(TipoPilha *Pilha)
         return 0;
 
     return Pilha->tamanho;
-}
-
-void libera_Pilha(TipoPilha *Pilha)
-{
-    if (Pilha != NULL)
-    {
-        Apontador no;
-
-        while (Pilha != NULL)
-        {
-            no = Pilha->Topo;
-            Pilha->Topo = Pilha->Topo->Prox;
-            free(no);
-        }
-        free(Pilha);
-    }
 }
 
 
@@ -134,10 +123,14 @@ void imprime_Pilha(TipoPilha *Pilha, TipoItem *Item)
 }
 
 void destroi_Pilha (TipoPilha *Pilha, TipoItem *Item){
+    
     while (Pilha->Topo->Prox != NULL){
         Desempilhar(Pilha,Item); 
     }
+	 	  	 	    	   	     	    		   	       	 	
 
+	free(Pilha->Topo);
+  
 }
 
 int Menu()
