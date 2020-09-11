@@ -38,8 +38,6 @@ int Empilhar(TipoItem X, TipoPilha *Pilha)
     Pilha->Topo = aux;
     Pilha->tamanho++;
 
-    //free(aux);
-
     return 1;
 }
 
@@ -54,7 +52,6 @@ int Desempilhar(TipoPilha *Pilha, TipoItem *Item)
     if (PilhaVazia(*Pilha))
     {
         cout << "\n Pilha está vazia!";
-        //Pilha->Topo=NULL;
         Item->Codigo = -1;
         return 0;
     }
@@ -145,7 +142,7 @@ int Menu()
         cout << "\n 4 - Imprimir Itens da Pilha";
         cout << "\n 0 - Sair\n\n";
 
-        cout << "Escolha uma opção: ";
+        cout << "Escolha uma opção [0-1-2-3-4]: ";
 
         setbuf(stdin, NULL);
         cin >> Opcao;

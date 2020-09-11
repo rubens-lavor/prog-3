@@ -1,8 +1,6 @@
 #include <iostream>
 #include <cstdlib>
-#include <memory>
 
-//#include "Pilha.cpp"
 #include "Pilha.hpp"
 
 using namespace std;
@@ -25,7 +23,6 @@ int main()
         switch (Opcao)
         {
         case 1:
-            //cout << "Inserir Item";
             aux.Codigo = 1;
             cout << "\n\nDigite um elemento para ser inserido: ";
 
