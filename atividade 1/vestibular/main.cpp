@@ -6,6 +6,7 @@
 
 using namespace std;
 
+/*
 int numero_aleatorio(int max, int min)
 {
     uniform_int_distribution<int> randomDist(min, max);
@@ -13,6 +14,7 @@ int numero_aleatorio(int max, int min)
     mt19937 randomNumbers(rd());
     return randomDist(randomNumbers);
 }
+*/
 
 int busca_numero(char *vetor_de_busca, int pos_contra_barra, int qtde_pos, int pos_inicio)
 {
@@ -72,6 +74,7 @@ int busca_numero(char *vetor_de_busca, int pos_contra_barra, int qtde_pos, int p
     return -2;
 }
 
+/*
 void criaLista()
 {
     ofstream arquivo; //inserção no arquivo
@@ -106,6 +109,7 @@ void criaLista()
 
     arquivo.close();
 }
+*/
 
 void ordena(int *vet)
 {
@@ -163,17 +167,6 @@ void ordena(int *vet)
             vet[posicao[3]] = aux[3];
         }
     }
-
-    /*
-    cout << endl;
-    cout << endl;
-
-    for (int i = 0; i < 6; i++)
-    {
-
-        cout << vet[i] << endl;
-    }
-    */
 }
 
 void curso_escolhido(int *vetor_curso, int registro, int nota, int idade, int curso, int contador)
@@ -185,6 +178,7 @@ void curso_escolhido(int *vetor_curso, int registro, int nota, int idade, int cu
     vetor_curso[indice + 2] = idade;
     vetor_curso[indice + 3] = curso;
 }
+
 int main()
 {
 
@@ -205,20 +199,21 @@ int main()
 
     //int vet_guarda_posicao[4] = {};
 
-    criaLista();
+    //criaLista();
 
     ifstream arquivoEntrada; //lê o arquivo
-    string linha[4] = {};
+    //string linha[4] = {};
+
     arquivoEntrada.open("vestibular.txt");
 
     if (arquivoEntrada.is_open())
     {
-        //while (getline(arquivoEntrada, linha)){cout << linha << endl;}
 
         int cont = 0;
+
+        //passando os caracteres para o vetor
         while (!arquivoEntrada.eof())
         {
-            /* code */
 
             arquivoEntrada.get(vetor_de_busca[posicao]);
 
@@ -259,6 +254,7 @@ int main()
     int curso = 0;
     int indice = 0;
     int contador = 0;
+
     int vetor_curso_11[40] = {};
     int vetor_curso_12[40] = {};
     int vetor_curso_13[40] = {};
@@ -266,17 +262,80 @@ int main()
     int vetor_curso_15[40] = {};
     int vetor_curso_16[40] = {};
 
+    int contador_curso_11 = 0;
+    int contador_curso_12 = 0;
+    int contador_curso_13 = 0;
+    int contador_curso_14 = 0;
+    int contador_curso_15 = 0;
+    int contador_curso_16 = 0;
+
     for (int i = 0; i < 10; i++)
     {
-        nota = busca_numero(vetor_de_busca, vetor_pos_contra_barra[i], 4, 15);
-        registro = busca_numero(vetor_de_busca, vetor_pos_contra_barra[i], 4, 2);
-        idade = busca_numero(vetor_de_busca, vetor_pos_contra_barra[i], 2, 7);
-        curso = busca_numero(vetor_de_busca, vetor_pos_contra_barra[i], 2, 11);
+        nota = busca_numero(vetor_de_busca, vetor_pos_contra_barra[i], 4, 15); // 4 digitos e começa na posição 15 a partir da \n
+        registro = busca_numero(vetor_de_busca, vetor_pos_contra_barra[i], 4, 2); // 4 digitos e começa na posição 2 a partir da \n
+        idade = busca_numero(vetor_de_busca, vetor_pos_contra_barra[i], 2, 7); // 2 digitos e começa na posição 7 a partir da \n
+        curso = busca_numero(vetor_de_busca, vetor_pos_contra_barra[i], 2, 11); // 2 digitos e começa na posição 11 a partir da \n
 
         if (curso == 11)
         {
-            curso_escolhido(vetor_curso_11, registro, nota, idade, curso, contador);
-            contador++;
+            //vetor_curso_11[contador_curso_11];
+
+            vetor_curso_11[contador_curso_11] = nota;
+            vetor_curso_11[contador_curso_11 + 1] = registro;
+            vetor_curso_11[contador_curso_11 + 2] = idade;
+            vetor_curso_11[contador_curso_11 + 3] = curso;
+
+            contador_curso_11++;
+        }
+
+        if (curso == 12)
+        {
+            vetor_curso_12[contador_curso_12] = nota;
+            vetor_curso_12[contador_curso_12 + 1] = registro;
+            vetor_curso_12[contador_curso_12 + 2] = idade;
+            vetor_curso_12[contador_curso_12 + 3] = curso;
+
+            contador_curso_12++;
+        }
+
+        if (curso == 13)
+        {
+            vetor_curso_13[contador_curso_13] = nota;
+            vetor_curso_13[contador_curso_13 + 1] = registro;
+            vetor_curso_13[contador_curso_13 + 2] = idade;
+            vetor_curso_13[contador_curso_13 + 3] = curso;
+
+            contador_curso_13++;
+        }
+
+        if (curso == 14)
+        {
+            vetor_curso_14[contador_curso_14] = nota;
+            vetor_curso_14[contador_curso_14 + 1] = registro;
+            vetor_curso_14[contador_curso_14 + 2] = idade;
+            vetor_curso_14[contador_curso_14 + 3] = curso;
+
+            contador_curso_14++;
+        }
+
+        if (curso == 15)
+        {
+            vetor_curso_15[contador_curso_15] = nota;
+            vetor_curso_15[contador_curso_15 + 1] = registro;
+            vetor_curso_15[contador_curso_15 + 2] = idade;
+            vetor_curso_15[contador_curso_15 + 3] = curso;
+
+            contador_curso_15++;
+        }
+
+        if (curso == 16)
+        {
+            vetor_curso_16[contador_curso_16] = nota;
+            vetor_curso_16[contador_curso_16 + 1] = registro;
+            vetor_curso_16[contador_curso_16 + 2] = idade;
+            vetor_curso_16[contador_curso_16 + 3] = curso;
+
+            contador_curso_16++;
         }
 
         indice = i * 4;
@@ -303,6 +362,12 @@ int main()
 
     //ordenar
     ordena(vetor_manobra);
+    ordena(vetor_curso_11);
+    ordena(vetor_curso_12);
+    ordena(vetor_curso_13);
+    ordena(vetor_curso_14);
+    ordena(vetor_curso_15);
+    ordena(vetor_curso_16);
 
     cout << "inscrição"
          << "\t"
