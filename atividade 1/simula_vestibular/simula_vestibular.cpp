@@ -61,8 +61,9 @@ int busca_curso(char *vetor_de_busca, int pos_contra_barra)
 
 /*-----------------------------------------------------------------------*/
 
-/*Essa função retorna um inteiro que corresponde aos parametros passados
-pode ser o curso, a nota, o registro ou a idade 
+/*Essa função retorna um inteiro que pode ser o curso, a nota, o registro ou a idade, 
+dependendo dos valores dos parametros passados.
+Esse valor é buscado no vetor_de_busca e convertido para inteiro
 */
 int busca_numero(char *vetor_de_busca, int pos_contra_barra, int qtde_pos, int pos_inicio)
 {
@@ -135,7 +136,7 @@ void ordena(int *vet, int inscritos)
     int posicao[4];
     bool troca;
     int aux[4];
-
+    
     for (int i = 0; i < inscritos * 4; i += 4) //varre o vetor de 4 em 4 posições, pegando apenas as notas
     {
         troca = false;
