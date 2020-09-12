@@ -1,6 +1,6 @@
-### Vestibular
+## Vestibular
 
-## Excutar o programa:
+### Excutar o programa:
 
 - Abra a pasta no terminal
 - $make all
