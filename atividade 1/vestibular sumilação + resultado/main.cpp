@@ -3,7 +3,6 @@
 #include <random>
 #include <cstdlib>
 
-
 using namespace std;
 
 int numero_aleatorio(int max, int min)
@@ -67,7 +66,8 @@ dependendo dos valores dos parametros passados.
 Esse valor é buscado no vetor_de_busca e convertido para inteiro
 */
 
-/*
+
+
 int busca_numero(char *vetor_de_busca, int pos_contra_barra, int qtde_pos, int pos_inicio)
 {
 
@@ -224,7 +224,7 @@ void imprime_resultado(int *vetor_curso, int contador_curso)
 
     cout << endl;
 }
-*/
+
 
 int main()
 {
@@ -242,7 +242,7 @@ int main()
     int vetor_pos_contra_barra[827] = {}; //guarda a posição do todos os \n
     int cont = 0;                         //incrementa cada vez que um \n é lido do arquivo
 
-    /*
+    
 
     //vetor_curso armazena as informaçoes dos inscritos do respectivo curso 
     int vetor_curso_11[230 * 4] = {}; //cada curso consegue ter no máximo 226 inscritos * 4 pois cada aluno gera 4 numeros
@@ -252,7 +252,7 @@ int main()
     int vetor_curso_15[230 * 4] = {};
     int vetor_curso_16[230 * 4] = {};
 
-    */
+    
 
     do
     {
@@ -307,37 +307,37 @@ int main()
 
             if (busca_curso(vetor_de_busca, vetor_pos_contra_barra[i]) == 11)
             {
-                //insere_no_vetor_do_curso(vetor_curso_11, vetor_de_busca, vetor_pos_contra_barra[i], contador_curso_11);
+                insere_no_vetor_do_curso(vetor_curso_11, vetor_de_busca, vetor_pos_contra_barra[i], contador_curso_11);
                 contador_curso_11++;
             }
 
             if (busca_curso(vetor_de_busca, vetor_pos_contra_barra[i]) == 12)
             {
-                //insere_no_vetor_do_curso(vetor_curso_12, vetor_de_busca, vetor_pos_contra_barra[i], contador_curso_12);
+                insere_no_vetor_do_curso(vetor_curso_12, vetor_de_busca, vetor_pos_contra_barra[i], contador_curso_12);
                 contador_curso_12++;
             }
 
             if (busca_curso(vetor_de_busca, vetor_pos_contra_barra[i]) == 13)
             {
-                //insere_no_vetor_do_curso(vetor_curso_13, vetor_de_busca, vetor_pos_contra_barra[i], contador_curso_13);
+                insere_no_vetor_do_curso(vetor_curso_13, vetor_de_busca, vetor_pos_contra_barra[i], contador_curso_13);
                 contador_curso_13++;
             }
 
             if (busca_curso(vetor_de_busca, vetor_pos_contra_barra[i]) == 14)
             {
-                //insere_no_vetor_do_curso(vetor_curso_14, vetor_de_busca, vetor_pos_contra_barra[i], contador_curso_14);
+                insere_no_vetor_do_curso(vetor_curso_14, vetor_de_busca, vetor_pos_contra_barra[i], contador_curso_14);
                 contador_curso_14++;
             }
 
             if (busca_curso(vetor_de_busca, vetor_pos_contra_barra[i]) == 15)
             {
-                //insere_no_vetor_do_curso(vetor_curso_15, vetor_de_busca, vetor_pos_contra_barra[i], contador_curso_15);
+                insere_no_vetor_do_curso(vetor_curso_15, vetor_de_busca, vetor_pos_contra_barra[i], contador_curso_15);
                 contador_curso_15++;
             }
 
             if (busca_curso(vetor_de_busca, vetor_pos_contra_barra[i]) == 16)
             {
-                //insere_no_vetor_do_curso(vetor_curso_16, vetor_de_busca, vetor_pos_contra_barra[i], contador_curso_16);
+                insere_no_vetor_do_curso(vetor_curso_16, vetor_de_busca, vetor_pos_contra_barra[i], contador_curso_16);
                 contador_curso_16++;
             }
         }
@@ -352,7 +352,7 @@ int main()
     cout << "Curso 16 numero de candidatos: " << contador_curso_16 << endl;
 
 
-    /*
+    
     cout << endl;
     cout << "Resultado do vestibular" << endl;
     imprime_resultado(vetor_curso_11, contador_curso_11);
@@ -361,7 +361,7 @@ int main()
     imprime_resultado(vetor_curso_14, contador_curso_14);
     imprime_resultado(vetor_curso_15, contador_curso_15);
     imprime_resultado(vetor_curso_16, contador_curso_16);
-    */
+    
 
 
     return 0;
