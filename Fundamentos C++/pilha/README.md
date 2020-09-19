@@ -1,4 +1,4 @@
-## Pilha
+## Pilha dinâmica
 
 ### Excutar o programa:
 
