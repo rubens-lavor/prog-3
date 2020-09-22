@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Pilha.hpp"
-#include "Pilha.cpp"
+//#include "Pilha.cpp"
 
 namespace PLH = Pilha;
 
