@@ -42,36 +42,6 @@ namespace Pilha
         }
     }
 
-    /*
-    std::string Pilha::getTopo()
-    {
-        std::cout << vet[topo] << std::endl;
-        return;
-    }
-    */
-
-    /*
-    bool Pilha::pilha_vazia()
-    {
-        return (topo == -1);
-    }
-    */
-
-   /*
-    void Pilha::setElemento()
-    {
-        std::cout << "\n\nDigite um elemento para ser inserido: ";
-        char elemento[100];
-        setbuf(stdin, NULL);
-        fgets(elemento, 100, stdin);
-
-        std::string elem = elemento;
-
-        //std::cout << nome << std::endl;
-
-        empilhar(elem);
-    }
-    */
 
     void Pilha::imprime_Pilha()
     {
@@ -79,7 +49,7 @@ namespace Pilha
         {
             std::cout << "Pilha vazia" << std::endl;
         }
-           
+
         for (int i = vet.size()-1; i >= 0; i--)
         {
             std::cout << vet[i] << std::endl;
