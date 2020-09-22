@@ -20,10 +20,10 @@ namespace Pilha
         void empilhar();
         void desempilhar();
         //std::string getTopo();
-        void setElemento();
-        //bool pilha_vazia();
+        //void setElemento();
         void imprime_Pilha();
         int tamanho_pilha();
+        //bool pilha_vazia();
     };
 
 } // namespace Pilha
