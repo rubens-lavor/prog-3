@@ -43,16 +43,11 @@ int main()
         switch (Opcao)
         {
         case 1:
-            
             p.empilhar();
-            
-
             break;
 
         case 2:
-
             p.desempilhar();
-          
             break;
         
         case 3:
@@ -60,7 +55,6 @@ int main()
             break;
 
         case 4:
-            //std::cout << "\n\nconsulta\n\n";
             p.imprime_Pilha();
             break;
        
@@ -69,11 +63,6 @@ int main()
         }
         Opcao = Menu();
     }
-
-    //std::cout << "Pilha vazia " << p.pilha_vazia() << std::endl;
-    //std::cout << "Topo " << p.getTopo() << std::endl;
-
-    //p.desempilhar();
 
     return 0;
 }
