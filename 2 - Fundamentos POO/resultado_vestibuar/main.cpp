@@ -3,8 +3,6 @@
 
 int main()
 {
-    /*para verificar se temos pelo menos 3 candidatos por vaga em cada curso*/
-
     Resultado_vestibular ResVEST;
 
     ResVEST.inicializa_resultado();
