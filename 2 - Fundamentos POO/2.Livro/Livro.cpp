@@ -41,13 +41,25 @@ std::string Livro::getISBN()
 
 int Livro::setISBN(std::string codigo[4])
 {
+    int cont_valida = 0;
+
     for (int i = 0; i < 4; i++)
     {
         if (valida_numero(codigo[i]))
         {
-            //ISBN = codigo;
+            ISBN[2*i + 1] = codigo[i];
+            cont_valida++;
         }
     }
+
+    if ( cont_valida != 4 )
+    {
+        std::cout << "informe um código válido" << "\n";
+        return 0; 
+    }
+
+    return 1;
+    
 }
 
 bool Livro::valida_numero(std::string codigo)

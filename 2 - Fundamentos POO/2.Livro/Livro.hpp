@@ -1,3 +1,6 @@
+#ifndef Livro_hpp
+#define Livro_hpp
+
 #include <iostream>
 
 class Livro
@@ -29,4 +32,5 @@ public:
     bool valida_numero(std::string codigo);
 };
 
+#endif
 
