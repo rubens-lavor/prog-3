@@ -4,7 +4,7 @@ class Livro
 {
 private:
     /* data */
-    std::string ISBN[4] = {"numero"-"numero"-"numero"-"digito"};
+    std::string ISBN[7] = {"numero","-","numero","-","numero","-","digito"};
     std::string titulo;
     std::string autor;
 
@@ -71,7 +71,7 @@ std::string Livro::getISBN()
 int Livro::setISBN(char *codigo)
 {
    if (valida_numero(codigo)){
-       ISBN = codigo;
+       //ISBN = codigo;
    }
     
 }
