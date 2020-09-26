@@ -86,7 +86,7 @@ bool Livro::valida_ISBN(std::string str0, std::string str1, std::string str2, st
 bool Livro::valida_numero(std::string str)
 {
 
-    for (int i = 0; i < str.length(); i++)
+    for (long unsigned int i = 0; i < str.length(); i++)
     {
 
         if (!isdigit(str[i]))
