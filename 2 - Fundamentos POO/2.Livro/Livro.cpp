@@ -1,20 +1,15 @@
 #include "Livro.hpp"
 
-Livro::Livro(std::string titulo, std::string autor, std::string str0, std::string str1, std::string str2, std::string dig)
+Livro::Livro(std::string titulo, std::string autor, std::string num0, std::string num1, std::string num2, std::string dig)
 {
-    if (valida_ISBN(str0, str1, str2, dig))
+    if (valida_ISBN(num0, num1, num2, dig))
     {
         setTitulo(titulo);
         setAutor(autor);
 
-        std::string codigo{(str0 + " - " + str1 + " - " + str2 + " - " + dig)};
+        std::string codigo{(num0 + "-" + num1 + "-" + num2 + "-" + dig)};
         setISBN(codigo);
 
-        /*
-        std::cout << codigo << std::endl;
-
-        std::cout << "Livro registrado" << std::endl;
-        */
     }
     else
     {
@@ -63,47 +58,12 @@ std::string Livro::getISBN()
 
 void Livro::setISBN(std::string codigo)
 {
-
-    /*
-    if (valida_ISBN(codigo[4]))
-    {
-        ISBN[0] = codigo[0];
-        ISBN[2] = codigo[1];
-        ISBN[4] = codigo[2];
-        ISBN[6] = codigo[3];
-    }
-
-    int cont_valida = 0;
-
-    for (int i = 0; i < 4; i++)
-    {
-        if (valida_ISBN(codigo[i]))
-        {
-            ISBN[2 * i + 1] = codigo[i];
-            cont_valida++;
-        }
-    }
-
-    if (cont_valida != 4)
-    {
-        std::cout << "informe um código válido"
-                  << "\n";
-        return 0;
-    }
-
-    return 1;
-    */
-
    ISBN=codigo;
 }
 
 bool Livro::valida_ISBN(std::string str0, std::string str1, std::string str2, std::string dig)
 {
 
-    /*
-    int cont_valida;
-    int cont = 0;
-    */
     std::string str[3];
 
     str[0] = str0;

@@ -14,7 +14,7 @@ private:
     bool emprestado = false;
 
 public:
-    Livro(std::string titulo,std::string autor,std::string str0,std::string str1,std::string str2,std::string dig);
+    Livro(std::string titulo,std::string autor,std::string num0,std::string num1,std::string num2,std::string dig);
     ~Livro();
 
     bool getEmprestimo();
