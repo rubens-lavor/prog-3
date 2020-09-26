@@ -1,7 +1,25 @@
 #include "Livro.hpp"
 
-Livro::Livro(/* args */)
+Livro::Livro(std::string titulo, std::string autor, std::string str0, std::string str1, std::string str2, std::string dig)
 {
+    if (valida_ISBN(str0, str1, str2, dig))
+    {
+        setTitulo(titulo);
+        setAutor(autor);
+
+        std::string codigo{(str0 + " - " + str1 + " - " + str2 + " - " + dig)};
+        setISBN(codigo);
+
+        /*
+        std::cout << codigo << std::endl;
+
+        std::cout << "Livro registrado" << std::endl;
+        */
+    }
+    else
+    {
+        std::cout << "código inválido" << std::endl;
+    }
 }
 
 Livro::~Livro()
@@ -10,6 +28,7 @@ Livro::~Livro()
 
 bool Livro::getEmprestimo()
 {
+    return emprestado;
 }
 
 void Livro::setEmprestimo(bool emprestado)
@@ -29,19 +48,23 @@ void Livro::setTitulo(std::string titulo)
 
 std::string Livro::getAutor()
 {
+    return autor;
 }
 
-void Livro::setAutor()
+void Livro::setAutor(std::string autor)
 {
+    this->autor = autor;
 }
 
 std::string Livro::getISBN()
 {
+    return ISBN;
 }
 
-int Livro::setISBN(std::string codigo[4])
+void Livro::setISBN(std::string codigo)
 {
 
+    /*
     if (valida_ISBN(codigo[4]))
     {
         ISBN[0] = codigo[0];
@@ -69,67 +92,48 @@ int Livro::setISBN(std::string codigo[4])
     }
 
     return 1;
+    */
+
+   ISBN=codigo;
 }
 
-bool Livro::valida_ISBN(std::string codigo[4])
+bool Livro::valida_ISBN(std::string str0, std::string str1, std::string str2, std::string dig)
 {
 
+    /*
     int cont_valida;
     int cont = 0;
+    */
+    std::string str[3];
 
-    while (cont<4)
+    str[0] = str0;
+    str[1] = str1;
+    str[2] = str2;
+
+    for (int i = 0; i < 3; i++)
     {
-        /* code */
-        //if(valida_codigo(codigo[i],cont)){
+        //str=str+std::to_string(i);
 
-        }
-
-        cont ++;
-    }
-    
-    
-
-    //while (codigo[i] != ' ' && codigo[i] != '\n')
-
-    for (int i = 0; i < codigo.length(); i++)
-    {
-        /* code */
-
-        if (cont < 3)
+        if (!valida_numero(str[i]))
         {
-            if (!isdigit(codigo[i]))
-            {
-                return false;
-            }
-            cont ++;
-        }
-        else
-        {
-            return (codigo[i].length() == 1);
+            return false;
         }
     }
 
+    return (dig.length() == 1 && isalnum(dig[0]));
 }
 
-/*
-bool valida_codigo (std::string codigo, int cont){
+bool Livro::valida_numero(std::string str)
+{
 
-    for (int i = 0; i < codigo.length(); i++)
+    for (int i = 0; i < str.length(); i++)
     {
 
-        if (cont < 3)
+        if (!isdigit(str[i]))
         {
-            if (!isdigit(codigo[i]))
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return (codigo[i].length() == 1);
+            return false;
         }
     }
+
+    return true;
 }
-
-
-*/

@@ -6,7 +6,11 @@
 
 int main(){
 
-    Livro book;
+    Livro book("um teste pra ver se funciona", "rubens", "2","3","2","3");
 
+    std::cout << "Título: " << book.getTitulo() << std::endl;
+    std::cout << "Autor: " << book.getAutor() << std::endl;
+    std::cout << "ISBN: " << book.getISBN() << std::endl;
+    
     return 0;
 }

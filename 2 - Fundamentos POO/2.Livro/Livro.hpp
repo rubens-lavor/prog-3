@@ -7,14 +7,14 @@ class Livro
 {
 private:
     /* data */
-    std::string ISBN[7] = {"numero","-","numero","-","numero","-","digito"};
+    std::string ISBN;
     std::string titulo;
     std::string autor;
 
     bool emprestado = false;
 
 public:
-    Livro(/* args */);
+    Livro(std::string titulo,std::string autor,std::string str0,std::string str1,std::string str2,std::string dig);
     ~Livro();
 
     bool getEmprestimo();
@@ -24,12 +24,14 @@ public:
     void setTitulo(std::string titulo);
 
     std::string getAutor();
-    void setAutor();
+    void setAutor(std::string autor);
 
     std::string getISBN();
-    int setISBN(std::string codigo[4]);
+    void setISBN(std::string codigo);
 
-    bool valida_ISBN(std::string codigo[4]);
+    bool valida_ISBN(std::string str0,std::string str1,std::string str2,std::string dig);
+
+    bool valida_numero (std::string str);
 };
 
 #endif
