@@ -74,7 +74,7 @@ int Livro::setISBN(std::string codigo[4])
 bool Livro::valida_ISBN(std::string codigo[4])
 {
 
-    int cont_valida
+    int cont_valida;
     int cont = 0;
 
     while (cont<4)
