@@ -29,7 +29,7 @@ public:
     std::string getISBN();
     int setISBN(std::string codigo[4]);
 
-    bool valida_numero(std::string codigo);
+    bool valida_ISBN(std::string codigo[4]);
 };
 
 #endif

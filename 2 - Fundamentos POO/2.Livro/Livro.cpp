@@ -41,31 +41,53 @@ std::string Livro::getISBN()
 
 int Livro::setISBN(std::string codigo[4])
 {
+
+    if (valida_ISBN(codigo[4]))
+    {
+        ISBN[0] = codigo[0];
+        ISBN[2] = codigo[1];
+        ISBN[4] = codigo[2];
+        ISBN[6] = codigo[3];
+    }
+
     int cont_valida = 0;
 
     for (int i = 0; i < 4; i++)
     {
-        if (valida_numero(codigo[i]))
+        if (valida_ISBN(codigo[i]))
         {
-            ISBN[2*i + 1] = codigo[i];
+            ISBN[2 * i + 1] = codigo[i];
             cont_valida++;
         }
     }
 
-    if ( cont_valida != 4 )
+    if (cont_valida != 4)
     {
-        std::cout << "informe um código válido" << "\n";
-        return 0; 
+        std::cout << "informe um código válido"
+                  << "\n";
+        return 0;
     }
 
     return 1;
-    
 }
 
-bool Livro::valida_numero(std::string codigo)
+bool Livro::valida_ISBN(std::string codigo[4])
 {
 
-    //int i = 0;
+    int cont_valida
+    int cont = 0;
+
+    while (cont<4)
+    {
+        /* code */
+        //if(valida_codigo(codigo[i],cont)){
+
+        }
+
+        cont ++;
+    }
+    
+    
 
     //while (codigo[i] != ' ' && codigo[i] != '\n')
 
@@ -73,14 +95,41 @@ bool Livro::valida_numero(std::string codigo)
     {
         /* code */
 
-        if (!isdigit(codigo[i]))
+        if (cont < 3)
         {
-            return false;
+            if (!isdigit(codigo[i]))
+            {
+                return false;
+            }
+            cont ++;
+        }
+        else
+        {
+            return (codigo[i].length() == 1);
         }
     }
 
-    //std::cout << i;
-    //i++;
-
-    return true;
 }
+
+/*
+bool valida_codigo (std::string codigo, int cont){
+
+    for (int i = 0; i < codigo.length(); i++)
+    {
+
+        if (cont < 3)
+        {
+            if (!isdigit(codigo[i]))
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return (codigo[i].length() == 1);
+        }
+    }
+}
+
+
+*/
