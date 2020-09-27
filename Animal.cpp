@@ -4,22 +4,28 @@ class Animal
 {
 private:
     /* data */
-    static std::string nome;
-    static int idade;
+    std::string nome;
+    int idade;
 
 public:
 
 Animal(std::string nome,int idade)
 {
+
     this->nome=nome;
     this->idade=idade;
 }
 
-Animal(const Animal &a, std::string nome,int idade)
+
+Animal(const Animal &a)
 {
+    std::cout<<"contrutor de cópia"<< std::endl;
+    /*
     a.idade=idade;
     a.nome=nome;
+    */
 }
+
 
 ~Animal()
 {
@@ -33,7 +39,7 @@ int getIdade(){
 }
 
 void setNome(std::string nome){
-    nome=nome;
+    this->nome=nome;
 }
 std::string getNome(){
     return this->nome;
@@ -46,4 +52,17 @@ void comer(){
 
 }
 
+
 };
+
+void foo(Animal a){
+
+}
+
+int main(){
+
+    Animal gato("eu",3);
+    foo(gato);
+    std::cout << gato.getNome()<<"\n";
+    return 0;
+}
