@@ -14,14 +14,14 @@ private:
     bool emprestado = false;
 
 public:
-    Livro(std::string titulo,std::string autor,std::string num0,std::string num1,std::string num2,std::string dig);
+    Livro(std::string,std::string,std::string,std::string ,std::string ,std::string);
     ~Livro();
 
     bool getEmprestimo();
     void setEmprestimo(bool emprestado);
 
     std::string getTitulo();
-    void setTitulo(std::string titulo);
+    void setTitulo(std::string);
 
     std::string getAutor();
     void setAutor(std::string autor);
