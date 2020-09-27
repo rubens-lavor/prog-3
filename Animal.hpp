@@ -4,56 +4,46 @@ class Animal
 {
 private:
     /* data */
-    std::string nome;
-    int idade;
+    static std::string nome;
+    static int idade;
 
 public:
-    Animal(/* args */);
-    Animal(std::string nome, int idade);
-    ~Animal();
 
-    void correr();
-    void comer();
-
-    void setIdade(int idade);
-    int getIdade();
-
-    void setNome(std::string nome);
-    std::string getNome();
-};
-
-Animal::Animal(/* args */)
+Animal(std::string nome,int idade)
 {
-}
-
-Animal::Animal()
-{
-}
-
-Animal::Animal(std::string nome, int idade)
-{
-    setIdade(idade);
-    setNome(nome);
-    this->comer();
-}
-
-void Animal::setIdade(int idade){
+    this->nome=nome;
     this->idade=idade;
 }
-int Animal::getIdade(){
+
+Animal(const Animal &a, std::string nome,int idade)
+{
+    a.idade=idade;
+    a.nome=nome;
+}
+
+~Animal()
+{
+}
+
+void setIdade(int idade){
+    this->idade=idade;
+}
+int getIdade(){
     return this->idade;
 }
 
-void Animal::setNome(std::string nome){
+void setNome(std::string nome){
     nome=nome;
 }
-std::string Animal::getNome(){
+std::string getNome(){
     return this->nome;
 }
 
-void Animal::correr(){
+void correr(){
 
 }
-void Animal::comer(){
+void comer(){
 
 }
+
+};
