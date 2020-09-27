@@ -20,10 +20,10 @@ Animal(std::string nome,int idade)
 Animal(const Animal &a)
 {
     std::cout<<"contrutor de cópia"<< std::endl;
-    /*
-    a.idade=idade;
-    a.nome=nome;
-    */
+    
+    idade=a.idade;
+    nome=a.nome;
+    
 }
 
 
@@ -62,7 +62,10 @@ void foo(Animal a){
 int main(){
 
     Animal gato("eu",3);
-    foo(gato);
+    //foo(gato);
+    Animal cachorro = gato;
     std::cout << gato.getNome()<<"\n";
+    std::cout << cachorro.getIdade()<<"\n";
+
     return 0;
 }
