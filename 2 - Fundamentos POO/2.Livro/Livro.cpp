@@ -1,12 +1,11 @@
 #include "Livro.hpp"
 
-Livro::Livro(std::string titulo, std::string autor, std::string num0, std::string num1, std::string num2, std::string dig, Genero gen)
+Livro::Livro(std::string titulo, std::string autor, std::string num0, std::string num1, std::string num2, std::string dig)
 {
     if (valida_ISBN(num0, num1, num2, dig))
     {
         setTitulo(titulo);
         setAutor(autor);
-        setGen(gen);
 
         std::string codigo{(num0 + "-" + num1 + "-" + num2 + "-" + dig)};
         setISBN(codigo);
@@ -72,7 +71,6 @@ bool Livro::valida_ISBN(std::string str0, std::string str1, std::string str2, st
 
     for (int i = 0; i < 3; i++)
     {
-        //str=str+std::to_string(i);
 
         if (!valida_numero(str[i]))
         {
@@ -96,34 +94,4 @@ bool Livro::valida_numero(std::string str)
     }
 
     return true;
-}
-
-void Livro::setGen(Genero gen)
-{
-    //this->genero = gen;
-    //std::string this->genero{};
-
-    switch (gen)
-    {
-    case Genero::biografia:
-        this->genero = "Biografia";
-        break;
-    case Genero::ficcao:
-        this->genero = "Ficção";
-        break;
-    case Genero::infantil:
-        this->genero = "Infantil";
-        break;
-    case Genero::nao_ficcao:
-        this->genero = "Não Ficção";
-        break;
-    case Genero::periodico:
-        this->genero = "Periódico";
-        break;
-    }
-}
-
-std::string Livro::getGen()
-{
-    return this->genero;
 }

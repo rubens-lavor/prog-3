@@ -3,24 +3,20 @@
 
 #include <iostream>
 
-enum class Genero{ficcao, nao_ficcao, periodico, biografia, infantil};
 
 class Livro
 {
 private:
-    /* data */
     std::string ISBN;
     std::string titulo;
     std::string autor;
 
-    std::string genero{};
     bool emprestado = false;
 
 public:
 
-    Genero gen;
 
-    Livro(std::string,std::string,std::string,std::string ,std::string ,std::string, enum Genero);
+    Livro(std::string,std::string,std::string,std::string ,std::string ,std::string);
     ~Livro();
 
     bool getEmprestimo();
@@ -39,8 +35,6 @@ public:
 
     bool valida_numero (std::string str);
 
-    void setGen(Genero);
-    std::string getGen();
 };
 
 #endif
