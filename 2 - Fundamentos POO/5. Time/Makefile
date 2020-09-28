@@ -1,19 +1,14 @@
-########################################################################
-####################### Makefile Template ##############################
-########################################################################
-
-# Compiler settings - Can be customized.
 CC = g++
 CXXFLAGS = -std=c++17 -Wall -Werror 
 LDFLAGS = 
 
-# Makefile settings - Can be customized.
+
 APPNAME = main
 EXT = .cpp
 SRCDIR = .
 OBJDIR = .
 
-############## Do not change anything from here downwards! #############
+
 SRC = $(wildcard $(SRCDIR)/*$(EXT))
 OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
 DEP = $(OBJ:$(OBJDIR)/%.o=%.d)
@@ -25,9 +20,6 @@ DEL = del
 EXE = .exe
 WDELOBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)\\%.o)
 
-########################################################################
-####################### Targets beginning here #########################
-########################################################################
 
 all: $(APPNAME)
 
