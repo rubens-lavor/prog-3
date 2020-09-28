@@ -1,71 +1,72 @@
 #include <iostream>
 
-class Animal
+class Carro
 {
 private:
     /* data */
-    std::string nome;
-    int idade;
+    std::string modelo;
+    float velocidade;
 
 public:
 
-Animal(std::string nome,int idade)
+Carro(std::string modelo,float velocidade)
 {
 
-    this->nome=nome;
-    this->idade=idade;
+    this->modelo=modelo;
+    this->velocidade=velocidade;
 }
 
 
-Animal(const Animal &a)
+Carro(const Carro &a)
 {
-    std::cout<<"contrutor de cópia"<< std::endl;
+    //std::cout<<"contrutor de cópia"<< std::endl;
     
-    idade=a.idade;
-    nome=a.nome;
+    velocidade=a.velocidade;
+    modelo=a.modelo;
     
 }
 
 
-~Animal()
+
+~Carro()
 {
 }
 
-void setIdade(int idade){
-    this->idade=idade;
+void setvelocidade(float velocidade){
+    this->velocidade=velocidade;
 }
-int getIdade(){
-    return this->idade;
+int getvelocidade(){
+    return this->velocidade;
 }
 
-void setNome(std::string nome){
-    this->nome=nome;
+void setmodelo(std::string modelo){
+    this->modelo=modelo;
 }
-std::string getNome(){
-    return this->nome;
+std::string getmodelo(){
+    return this->modelo;
 }
 
 void correr(){
 
 }
-void comer(){
+void parar(){
 
 }
 
 
 };
 
-void foo(Animal a){
+void foo(Carro a){
 
 }
 
 int main(){
 
-    Animal gato("eu",3);
+    Carro gato("eu",3);
     //foo(gato);
-    Animal cachorro = gato;
-    std::cout << gato.getNome()<<"\n";
-    std::cout << cachorro.getIdade()<<"\n";
+    Carro cachorro = gato;
+    std::cout << gato.getmodelo()<<"\n";
+    std::cout << cachorro.getvelocidade()<<"\n";
 
     return 0;
 }
