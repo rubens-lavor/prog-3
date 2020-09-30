@@ -24,7 +24,7 @@ int main(){
     map1[2]=3;
     map1[3]=4;
 
-    lista1.push_back(map1);
+    lista1.push_front(map1);
 
     std::cout << lista1.front()[3] << std::endl;
     std::cout << lista1.back()[0] << std::endl;
@@ -32,11 +32,24 @@ int main(){
 
     std::cout << lista1.size() << std::endl;
 
-
+    /*
     for (size_t i = 0; i < 6; i++)
     {
         std::cout << lista1.front()[i] << std::endl;
     }
+    */
+   std::map<int,int>map3;
+
+    for (auto m:map1){
+        map3[m.first] = m.second;
+        lista1.push_back(map3);
+    }
+
+    std::cout << lista1.front()[3] << std::endl;
+    std::cout << lista1.back()[0] << std::endl;
+    std::cout << lista1.back()[1] << std::endl;
+
+    std::cout << lista1.size() << std::endl;
     
     
 
