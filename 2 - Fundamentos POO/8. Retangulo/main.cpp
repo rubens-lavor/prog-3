@@ -62,7 +62,7 @@ int main(){
     r.setComprimento(20.0);
     r.setLargura(20.0);
 
-    std::cout << std::fixed << std::setprecision(2);
+    std::cout << std::fixed << std::setprecision(2); //duas casas decimais
 
     std::cout << "A largura é: " << r.getLargura()<< std::endl;
     std::cout << "O comprimento é: " << r.getComprimento()<< std::endl; 
