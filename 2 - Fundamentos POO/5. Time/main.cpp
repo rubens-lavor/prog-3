@@ -17,6 +17,13 @@ public:
     {
     }
 
+    Time(int hora,int min,int seg)
+    {
+        setHora(hora);
+        setMinuto(min);
+        setSegundo(seg);
+    }
+
     ~Time()
     {
     }
