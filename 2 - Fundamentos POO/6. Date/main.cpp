@@ -4,21 +4,22 @@
 class Date
 {
 private:
-    unsigned int _dia{0};
-    unsigned int mes{0};
-    unsigned int ano{0};
-
-    std::vector<std::pair<int, int>> dia{{1, 1}, {1, 1}, {1, 1}};
-    /*o premeiro par representa os 2 dígitos da hora
-    depois minutos e o ultimo par, os segundos.
-    */
+    int _dia{1};
+    int mes{1};
+    int ano{2000};
 
     std::string data{};
 
-    int dias_mes{30};
+    int dias_mes{31};
 
 public:
-    Date(/* args */)
+    Date(int dia, int mes, int ano)
+    {
+        setDia(dia);
+        setMes(mes);
+        setAno(ano);
+    }
+    Date()
     {
     }
 
@@ -36,17 +37,6 @@ public:
             if (this->mes + 1 > 12)
             {
                 setMes(1);
-
-                /*
-                if (getAno() + 1 == 24)
-                {
-                    setAno(0);
-                }
-                else
-                {
-                    setAno(getAno() + 1);
-                }
-                */
                 setAno(getAno() + 1);
             }
             else
@@ -62,6 +52,8 @@ public:
 
     void setAno(int ano)
     {
+        if (ano < 0)
+            return;
         this->ano = ano;
     }
 
@@ -74,30 +66,32 @@ public:
     void setMes(int mes)
     {
 
-        mes < 13 ? ({
-            switch (mes)
+        if (mes < 13 && mes > 0)
+        {
+
+            if (mes == 4 || mes == 6 || mes == 9 || mes == 11)
             {
-            case 4 || 6 || 9 || 11:
                 this->dias_mes = 30;
-                break;
-
-            case 2:
-                this->dias_mes = 28;
-                break;
-
-            default:
-                this->dias_mes = 31;
-                break;
             }
+            else if (mes == 2)
+            {
+                this->dias_mes = 28;
+            }
+            else
+            {
+                this->dias_mes = 31;
+            }
+
             this->mes = mes;
-        })
-                 : ({
-                       std::cout << "mês inválido \n";
-                       this->mes = 1;
-                   });
+        }
+        else
+        {
+            std::cout << "mês inválido \n";
+        }
     }
 
-    int getMes()
+    int
+    getMes()
     {
 
         return this->mes;
@@ -107,7 +101,7 @@ public:
     {
         if (dia > this->dias_mes || dia < 0)
         {
-            std::cout << "dia inválido para o mês atual \n";
+            std::cout << "dia inválido \n";
             return;
         }
 
@@ -120,89 +114,64 @@ public:
         return this->_dia;
     }
 
-    void imprime_hora(std::string s = "")
-    {
-        data.append(s);
-        std::cout << data << std::endl;
-    }
-
-    void for_dia()
-    {
-        for (auto t : dia)
-        {
-            data.append(std::to_string(t.first) + std::to_string(t.second) + ":");
-        }
-
-        data.pop_back();
-    }
-
-    void data_universal()
-    {
-        data = {};
-
-        for_dia();
-
-        imprime_hora();
-    }
-
-    std::string completa_data(int x) //essa função edita o formato da hora com 2 digitos caso o zero esteja a esquerda
+    std::string completa_data(int x)
     {
         return (
-            std::to_string(x).length() == 1 ? "0" + std::to_string(x) + ":" : std::to_string(x) + ":");
+            std::to_string(x).length() == 1 ? "0" + std::to_string(x) + "/" : std::to_string(x) + "/");
     }
 
-    void data_AM_PM()
+    void imprime_data()
     {
 
         data = {};
 
-        if (getAno() > 12)
-        {
-            data.append(completa_data(getAno() - 12));
-            data.append(completa_data(getMes()));
-            data.append(completa_data(getDia()));
+        data.append(completa_data(getDia()));
+        data.append(completa_data(getMes()));
+        data.append(completa_data(getAno()));
 
-            data.pop_back();
-        }
+        data.pop_back();
 
-        else
-        {
-            for_dia(); //essa função preenche a string dia.
-        }
-
-        imprime_hora(getAno() > 12 ? " PM" : " AM");
+        std::cout << data << std::endl;
+        //std::cout << "dias_mes" << dias_mes << std::endl;
     }
 };
 
-int main()
-{
+int main(){
 
-    Date t;
+    Date d;
+    
+    d.imprime_data();
 
-    std::cout << "setando hora para 12 \n";
-    t.setAno(23);
-    t.data_universal();
-    t.data_AM_PM();
+    std::cout << "nextDay().." << std::endl;
+    d.nextDay();
+    d.imprime_data();
 
-    std::cout << "setando minuto para 59 \n";
-    t.setMes(59);
-    t.data_universal();
-    t.data_AM_PM();
+    std::cout << "setando para dia 31" << std::endl;
+    d.setDia(31);
+    d.imprime_data();
 
-    std::cout << "setando segundo para 59 \n";
-    t.setDia(59);
-    t.data_universal();
-    t.data_AM_PM();
+    std::cout << "nextDay().." << std::endl;
+    d.nextDay();
+    d.imprime_data();
 
-    std::cout << "nextDay():..\n";
-    t.nextDay();
-    t.data_universal();
-    t.data_AM_PM();
+    std::cout << "setando o mes para junho" << std::endl;
+    d.setMes(6);
+    d.imprime_data();
 
-    std::cout << "nextDay():..\n";
-    t.nextDay();
-    t.data_universal();
-    t.data_AM_PM();
+    std::cout << "setando para dia 30" << std::endl;
+    d.setDia(30);
+    d.imprime_data();
+
+    std::cout << "nextDay().." << std::endl;
+    d.nextDay();
+    d.imprime_data();
+
+    std::cout << "setando para 31/12/2020" << std::endl;
+    Date d2(31, 12, 2020);
+    d2.imprime_data();
+    std::cout << "nextDay().." << std::endl;
+    d2.nextDay();
+    d2.imprime_data();
 
     return 0;
 }
