@@ -1,8 +1,5 @@
 #include <iostream>
 #include <vector>
-//#include "Funcionario.hpp"
-///#include "Departamento.hpp"
-//#include "Empresa.hpp"
 
 class Funcionario
 {
@@ -37,12 +34,6 @@ public:
     {
         return this->nome;
     }
-    /*
-    void setNome(std::string);
-    std::string getNome();
-    void setSalario(float valor);
-    float getSalario();
-    */
 
     void setAdmissao(std::string data)
     {
