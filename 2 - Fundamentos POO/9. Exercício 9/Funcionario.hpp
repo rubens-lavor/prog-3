@@ -8,7 +8,7 @@ private:
     std::string data_admissao{"dd/mm/aa"};
 
 public:
-    Funcionario(/* args */);
+    Funcionario(/* args */){}
     Funcionario(std::string nome)
     {
         this->nome = nome;
@@ -33,12 +33,6 @@ public:
     {
         return this->nome;
     }
-    /*
-    void setNome(std::string);
-    std::string getNome();
-    void setSalario(float valor);
-    float getSalario();
-    */
 
     void setAdmissao(std::string data)
     {

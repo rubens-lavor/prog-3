@@ -65,5 +65,7 @@ int main(){
 
     dt.mostra_data_e_hora();
 
+    //d.imprime_data();
+
     return 0;
 }

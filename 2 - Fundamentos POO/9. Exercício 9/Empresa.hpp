@@ -1,5 +1,3 @@
-#include <iostream>
-#include <vector>
 #include "Departamento.hpp"
 
 class Empresa
@@ -7,13 +5,13 @@ class Empresa
 private:
     std::string nome;
     std::string CNPJ;
-    std::vector<Departamento> departamento;
+    std::vector<Departamento*> departamento;
 
 public:
     Empresa(/* args */){}
     ~Empresa(){}
 
-    void setDepartamento(Departamento d)
+    void setDepartamento(Departamento *d)
     {
         if (departamento.size() == 10)
         {
@@ -24,11 +22,12 @@ public:
     }
 
     void mostra_depar(){
+        std::string s{};
         for (auto v : departamento)
     {
-        std::cout << v.getNome() << " - " << std::endl;
+        s = v->qtdade_funcionarios() < 2 ? " Funcionário " : " Funcionários" ;
+        std::cout << v->getNome() << " - " << v->qtdade_funcionarios() << s << std::endl;
     }
     }
 
 };
-
