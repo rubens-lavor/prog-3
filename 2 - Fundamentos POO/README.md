@@ -1,3 +1,10 @@
+## Comandos para executar os exemplos:
+
+### Com o diretório do exemplo aberto via terminal digite os comandos abaixo:
+
+$make all
+$./main
+
 ## Exercícios – Tópico 2
 1. Reimplemente os exercícios do tópico anterior, usando os conceitos de orientação a objeto.
 
