@@ -1,4 +1,5 @@
 #include <vector>
+
 #include "Funcionario.hpp"
 
 class Departamento {
@@ -25,18 +26,10 @@ class Departamento {
     void aumento() {
         for (auto v : vetor_funcionarios) {
             v->setSalario(v->getSalario() * 1.1);
-            //std::cout << v->getNome() << " - " << v->getSalario() << std::endl;
         }
 
         std::cout << "Após o aumento:" << std::endl;
         this->mostra_funcionarios();
-        /*
-        for (auto v:vetor_funcionarios)
-        {
-            v.setSalario(v.getSalario() * 1.1);
-            std::cout << v.getNome() << " - " << v.getSalario() << std::endl;
-        }
-        */
     }
     void setFuncionario(Funcionario* fun, float salario, std::string data_adm) {
         this->_funcionario = fun;
@@ -48,17 +41,9 @@ class Departamento {
 
     void mostra_funcionarios() {
         std::cout << "Funcionários e salario do " << this->nome << ":" << std::endl;
-
         for (auto v : vetor_funcionarios) {
             std::cout << v->getNome() << " - " << v->getSalario() << std::endl;
         }
-        /*
-        for (auto v : vetor_funcionarios)
-        {
-            std::cout << v.getNome() << " - " << v.getSalario() << std::endl;
-        }
-        */
-
         std::cout << std::endl;
     }
 

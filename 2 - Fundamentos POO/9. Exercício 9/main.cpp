@@ -1,7 +1,6 @@
 #include "Empresa.hpp"
 
-int main()
-{
+int main() {
     Funcionario f1("José");
     Funcionario f2("Maria");
     Funcionario f3("Lucia");
@@ -23,18 +22,14 @@ int main()
     e.setDepartamento(&d3);
     e.setDepartamento(&d4);
     e.setDepartamento(&d5);
-    
 
-    //d.setNome("Departamento de Finança");
-    //std::cout << f1.getNome();
-
-    d1.setFuncionario(&f1,2000.00,"12/08/2019");
-    d1.setFuncionario(&f2,2000.00,"10/10/2019");
-    d1.setFuncionario(&f3,2000.00,"12/05/2018");
-    d2.setFuncionario(&f4,2100.00,"22/02/2018");
-    d2.setFuncionario(&f5,2100.00,"25/02/2018");
-    d3.setFuncionario(&f6,2050.00,"15/01/2020");
-    d3.setFuncionario(&f7,2050.00,"12/07/2019");
+    d1.setFuncionario(&f1, 2000.00, "12/08/2019");
+    d1.setFuncionario(&f2, 2000.00, "10/10/2019");
+    d1.setFuncionario(&f3, 2000.00, "12/05/2018");
+    d2.setFuncionario(&f4, 2100.00, "22/02/2018");
+    d2.setFuncionario(&f5, 2100.00, "25/02/2018");
+    d3.setFuncionario(&f6, 2050.00, "15/01/2020");
+    d3.setFuncionario(&f7, 2050.00, "12/07/2019");
 
     d1.mostra_funcionarios();
     d2.mostra_funcionarios();
@@ -44,7 +39,6 @@ int main()
     std::cout << "\n";
 
     e.mostra_depar();
-
 
     return 0;
 }
