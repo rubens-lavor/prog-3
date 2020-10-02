@@ -3,6 +3,7 @@
 ### Com o diretório do exemplo aberto via terminal digite os comandos abaixo:
 
 $make all
+
 $./main
 
 ## Exercícios – Tópico 2
