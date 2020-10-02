@@ -15,15 +15,7 @@ int main() {
     std::shared_ptr<Departamento> d4(new Departamento("Departamento de Marketing"));
     std::shared_ptr<Departamento> d5(new Departamento("Departamento de Compras"));
 
-    /*
-    Departamento d2("Departamento de Marketing");
-    Departamento d3("Departamento de Contabilidade");
-    Departamento d4("Departamento de Cobranças");
-    Departamento d5("Departamento de Compras");
-    */
     Empresa e;
-
-    //std::shared_ptr<Departamento> d1 = Departamento("Departamento de Finanças");
 
     e.setDepartamento(d1);
     e.setDepartamento(d2);

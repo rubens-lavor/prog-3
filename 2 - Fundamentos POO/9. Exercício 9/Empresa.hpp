@@ -1,12 +1,10 @@
 #include "Departamento.hpp"
-#include <memory>
 
 class Empresa {
    private:
     std::string nome;
     std::string CNPJ;
     //std::vector<Departamento *> departamento;
-    //std::shared_ptr
 
     std::vector<std::shared_ptr<Departamento>> departamento;
 

@@ -1,11 +1,10 @@
-#include <vector>
 #include "Funcionario.hpp"
+#include <vector>
 #include <memory>
 
 class Departamento {
    private:
     std::string nome;
-    std::shared_ptr<Funcionario>_funcionario;
     //std::vector<Funcionario*> vetor_funcionarios;
 
     std::vector<std::shared_ptr<Funcionario>> vetor_funcionarios;
@@ -34,11 +33,9 @@ class Departamento {
         this->mostra_funcionarios();
     }
     void setFuncionario(std::shared_ptr<Funcionario>fun , float salario , std::string data_adm) {
-        //this->_funcionario = fun;
+        
         fun->setSalario(salario);
         fun->setAdmissao(data_adm);
-        //this->_funcionario->setSalario(salario);
-        //this->_funcionario->setAdmissao(data_adm);
         vetor_funcionarios.push_back(fun);
     }
 
