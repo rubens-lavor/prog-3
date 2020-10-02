@@ -12,7 +12,7 @@ private:
     std::string data_admissao{"dd/mm/aa"};
 
 public:
-    Funcionario(/* args */);
+    Funcionario(/* args */){}
     Funcionario(std::string nome)
     {
         this->nome = nome;
@@ -86,11 +86,11 @@ public:
     }
     void setFuncionario(Funcionario fun, float salario, std::string data_adm)
     {
-        this->_funcionario = fun;
+        //this->_funcionario = fun;
 
-        this->_funcionario.setSalario(salario);
-        this->_funcionario.setAdmissao(data_adm);
-        vetor_funcionarios.push_back(this->_funcionario);
+        fun.setSalario(salario);
+        fun.setAdmissao(data_adm);
+        vetor_funcionarios.push_back(fun);
     }
 
     void mostra_funcionarios()
