@@ -6,6 +6,7 @@ $make all
 $./main
 
 ## Exercícios – Tópico 2
+
 1. Reimplemente os exercícios do tópico anterior, usando os conceitos de orientação a objeto.
 
 2. Implemente uma classe Livro, imaginando que ela será usada como componente de
