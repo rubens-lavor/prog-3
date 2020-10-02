@@ -5,7 +5,7 @@ class Funcionario
 {
 private:
     std::string nome;
-    float salario;
+    float salario{0};
     std::string data_admissao{"dd/mm/aa"};
 
 public:
@@ -58,7 +58,7 @@ class Departamento
 private:
     std::string nome;
     //int vec[10];
-    //Funcionario fun;
+    Funcionario _funcionario;
     //Funcionario vet[100];
     //int i{0};
     std::vector<Funcionario> vetor_funcionarios;
@@ -91,17 +91,21 @@ Departamento::~Departamento()
 {
 }
 void Departamento::aumento(){
+
     for (auto v:vetor_funcionarios)
     {
         v.setSalario(v.getSalario()*1.1);
+        std::cout << v.getNome() << " - " << v.getSalario() << std::endl;
     }
     
 }
 void Departamento::setFuncionario(Funcionario fun,float salario,std::string data_adm)
 {
-    fun.setSalario(salario);
-    fun.setAdmissao(data_adm);
-    vetor_funcionarios.push_back(fun);
+    this->_funcionario=fun;
+    
+    this->_funcionario.setSalario(salario);
+    this->_funcionario.setAdmissao(data_adm);
+    vetor_funcionarios.push_back(this->_funcionario);
 }
 
 void Departamento::mostra_funcionarios()
@@ -110,7 +114,7 @@ void Departamento::mostra_funcionarios()
 
     for (auto v : vetor_funcionarios)
     {
-        std::cout << v.getNome() << std::endl;
+        std::cout << v.getNome() << " - " << v.getSalario() << std::endl;
     }
 
     std::cout << std::endl;
@@ -137,10 +141,13 @@ public:
         departamento.push_back(d);
     }
 
-    void aumento(Departamento d)
+    void mostra_depar(){
+        for (auto v : departamento)
     {
-        
+        std::cout << v.getNome() << " - " << std::endl;
     }
+    }
+
 };
 
 Empresa::Empresa(/* args */)
@@ -160,7 +167,7 @@ int main()
     Funcionario f5("Luidi");
     Funcionario f6("Mário");
     Funcionario f7("Léia");
-    
+
     Departamento d1("Departamento de Finanças");
     Departamento d2("Departamento de Marketing");
     Departamento d3("Departamento de Contabilidade");
@@ -180,6 +187,7 @@ int main()
     //std::cout << f1.getNome();
 
     d1.setFuncionario(f1,2000.00,"12/08/2019");
+    std::cout << "salario f1: "<<f1.getSalario();
     d1.setFuncionario(f2,2000.00,"10/10/2019");
     d1.setFuncionario(f3,2000.00,"12/05/2018");
     d2.setFuncionario(f4,2100.00,"22/02/2018");
@@ -191,7 +199,13 @@ int main()
     d2.mostra_funcionarios();
     d3.mostra_funcionarios();
 
+    d1.aumento();
 
+    d1.mostra_funcionarios();
+
+    std::cout << f1.getSalario();
+
+    e.mostra_depar();
 
 
     return 0;
