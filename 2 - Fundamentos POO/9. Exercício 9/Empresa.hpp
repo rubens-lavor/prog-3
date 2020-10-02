@@ -1,16 +1,20 @@
 #include "Departamento.hpp"
+#include <memory>
 
 class Empresa {
    private:
     std::string nome;
     std::string CNPJ;
-    std::vector<Departamento *> departamento;
+    //std::vector<Departamento *> departamento;
+    //std::shared_ptr
+
+    std::vector<std::shared_ptr<Departamento>> departamento;
 
    public:
     Empresa(/* args */) {}
     ~Empresa() {}
 
-    void setDepartamento(Departamento *d) {
+    void setDepartamento(std::shared_ptr<Departamento>d) {
         if (departamento.size() == 10) {
             std::cout << "Número máximo de departamentos\n";
             return;

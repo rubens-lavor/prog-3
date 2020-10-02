@@ -1,12 +1,14 @@
 #include <vector>
-
 #include "Funcionario.hpp"
+#include <memory>
 
 class Departamento {
    private:
     std::string nome;
-    Funcionario* _funcionario;
-    std::vector<Funcionario*> vetor_funcionarios;
+    std::shared_ptr<Funcionario>_funcionario;
+    //std::vector<Funcionario*> vetor_funcionarios;
+
+    std::vector<std::shared_ptr<Funcionario>> vetor_funcionarios;
 
    public:
     Departamento(std::string nome) {
@@ -31,12 +33,13 @@ class Departamento {
         std::cout << "Após o aumento:" << std::endl;
         this->mostra_funcionarios();
     }
-    void setFuncionario(Funcionario* fun, float salario, std::string data_adm) {
-        this->_funcionario = fun;
-
-        this->_funcionario->setSalario(salario);
-        this->_funcionario->setAdmissao(data_adm);
-        vetor_funcionarios.push_back(this->_funcionario);
+    void setFuncionario(std::shared_ptr<Funcionario>fun , float salario , std::string data_adm) {
+        //this->_funcionario = fun;
+        fun->setSalario(salario);
+        fun->setAdmissao(data_adm);
+        //this->_funcionario->setSalario(salario);
+        //this->_funcionario->setAdmissao(data_adm);
+        vetor_funcionarios.push_back(fun);
     }
 
     void mostra_funcionarios() {
