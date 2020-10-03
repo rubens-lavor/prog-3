@@ -1,3 +1,6 @@
+#ifndef FUNCIONARIO_H
+#define FUNCIONARIO_H
+
 #include <iostream>
 
 class Funcionario {
@@ -34,3 +37,5 @@ class Funcionario {
         return this->data_admissao;
     }
 };
+
+#endif
