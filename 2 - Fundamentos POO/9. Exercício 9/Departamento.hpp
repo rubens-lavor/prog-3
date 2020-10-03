@@ -1,3 +1,6 @@
+#ifndef DEPARTAMENTO_H
+#define DEPARTAMENTO_H
+
 #include "Funcionario.hpp"
 #include <vector>
 #include <memory>
@@ -54,3 +57,5 @@ class Departamento {
         return this->nome;
     }
 };
+
+#endif

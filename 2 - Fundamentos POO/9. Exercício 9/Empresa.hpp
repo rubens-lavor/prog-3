@@ -1,3 +1,6 @@
+#ifndef EMPRESA_H
+#define EMPRESA_H
+
 #include "Departamento.hpp"
 
 class Empresa {
@@ -28,3 +31,5 @@ class Empresa {
         }
     }
 };
+
+#endif
