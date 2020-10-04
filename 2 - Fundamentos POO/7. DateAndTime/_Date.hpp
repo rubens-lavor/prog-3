@@ -1,3 +1,6 @@
+#ifndef DATE_H
+#define DATE_H
+
 #include <iostream>
 #include <vector>
 
@@ -135,4 +138,7 @@ public:
         //std::cout << "dias_mes" << dias_mes << std::endl;
     }
 };
+
+
+#endif
 

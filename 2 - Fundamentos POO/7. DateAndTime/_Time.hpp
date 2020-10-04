@@ -1,3 +1,6 @@
+#ifndef TIME_H
+#define TIME_H
+
 #include <iostream>
 #include <vector>
 
@@ -162,3 +165,4 @@ public:
     }
 };
 
+#endif
