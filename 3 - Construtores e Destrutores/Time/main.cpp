@@ -1,67 +1,68 @@
 #include <iostream>
 #include <vector>
 
-class Time
-{
-private:
-
-    std::vector<std::pair<int, int>> horarios{{0, 0}, {0, 0}, {0, 0}};
-    /*o premeiro par representa os 2 dígitos da hora
-    depois minutos e o ultimo par, os segundos.
-    */
-
+class Time {
+   private:
+    std::vector<std::pair<int, int>> horarios{{},{},{}}; //HH,MM,SS
     std::string horario{};
 
-public:
-    Time(/* args */)
-    {
-    }
+   public:
 
-    Time(int hora,int min,int seg)
-    {
+   /*
+    Money() : amount{ 0.0 } {};
+    Money(double _amount) : amount{ _amount } {};
+    */
+
+    explicit Time():horario{"00:00:00"}, horarios{{0, 0}, {0, 0}, {0, 0}} {};
+
+    Time(int hora, int min){
         setHora(hora);
         setMinuto(min);
-        setSegundo(seg);
+        setSegundo(0);
     }
 
-    ~Time()
-    {
+    ~Time() {
+        std::cout << "Destrutor\n";
     }
 
-    void tick()
-    {
+    explicit Time(int segundo) {
+        setHora(0);
+        setMinuto(0);
+        setSegundo(segundo);
+    }
 
-        if (getSegundo() + 1 == 60)
-        {
+    Time (const Time &t){
+        
+    }
+
+    explicit Time(double hora) {
+        setHora(hora);
+        setMinuto(0);
+        setSegundo(0);
+    }
+
+    void tick() {
+        if (getSegundo() + 1 == 60) {
             setSegundo(0);
 
-            if (getMinuto() + 1 == 60)
-            {
+            if (getMinuto() + 1 == 60) {
                 setMinuto(0);
 
-                if (getHora() + 1 == 24)
-                {
+                if (getHora() + 1 == 24) {
                     setHora(0);
-                }
-                else
-                {
+                } else {
                     setHora(getHora() + 1);
                 }
-            }
-            else{
+            } else {
                 setMinuto(getMinuto() + 1);
             }
-        }
-        else{
+        } else {
             setSegundo(getSegundo() + 1);
         }
-
     }
 
-    void setHora(int hora)
-    {
-        if (hora >= 24 || hora < 0)
-        {
+    void setHora(int hora) {
+        if (hora >= 24 || hora < 0) {
             return;
         }
 
@@ -69,16 +70,12 @@ public:
         horarios[0].second = hora % 10;
     }
 
-    int getHora()
-    {
-
+    int getHora() {
         return (horarios[0].first * 10 + horarios[0].second);
     }
 
-    void setMinuto(int minuto)
-    {
-        if (minuto > 60 || minuto < 0)
-        {
+    void setMinuto(int minuto) {
+        if (minuto > 60 || minuto < 0) {
             return;
         }
 
@@ -86,16 +83,12 @@ public:
         horarios[1].second = minuto % 10;
     }
 
-    int getMinuto()
-    {
-
+    int getMinuto() {
         return (horarios[1].first * 10 + horarios[1].second);
     }
 
-    void setSegundo(int segundo)
-    {
-        if (segundo > 60 || segundo < 0)
-        {
+    void setSegundo(int segundo) {
+        if (segundo > 60 || segundo < 0) {
             return;
         }
 
@@ -103,29 +96,24 @@ public:
         horarios[2].second = segundo % 10;
     }
 
-    int getSegundo()
-    {
-
+    int getSegundo() {
         return (horarios[2].first * 10 + horarios[2].second);
     }
 
-    void imprime_hora(std::string s = "")
-    {
+    void imprime_hora(std::string s = "") {
         horario.append(s);
         std::cout << horario << std::endl;
     }
 
-    void for_horarios(){
-        for (auto t : horarios)
-        {
+    void for_horarios() {
+        for (auto t : horarios) {
             horario.append(std::to_string(t.first) + std::to_string(t.second) + ":");
         }
 
         horario.pop_back();
     }
 
-    void horario_universal()
-    {
+    void horario_universal() {
         horario = {};
 
         for_horarios();
@@ -133,19 +121,16 @@ public:
         imprime_hora();
     }
 
-    std::string completa_horario(int x) //essa função edita o formato da hora com 2 digitos caso o zero esteja a esquerda
+    std::string completa_horario(int x)  //essa função edita o formato da hora com 2 digitos caso o zero esteja a esquerda
     {
         return (
             std::to_string(x).length() == 1 ? "0" + std::to_string(x) + ":" : std::to_string(x) + ":");
     }
 
-    void horario_AM_PM()
-    {
-
+    void horario_AM_PM() {
         horario = {};
 
-        if (getHora() > 12)
-        {
+        if (getHora() > 12) {
             horario.append(completa_horario(getHora() - 12));
             horario.append(completa_horario(getMinuto()));
             horario.append(completa_horario(getSegundo()));
@@ -153,44 +138,42 @@ public:
             horario.pop_back();
         }
 
-        else
-        {
-            for_horarios(); //essa função preenche a string horarios.
+        else {
+            for_horarios();  //essa função preenche a string horarios.
         }
 
         imprime_hora(getHora() > 12 ? " PM" : " AM");
     }
 };
 
-int main()
+int main() {
+
+    return 0;
+}
+
+#include <iostream>
+
+class Money
 {
+public:
+    Money() : amount{ 0.0 } {};
+    Money(double _amount) : amount{ _amount } {};
 
-    Time t;
+    double amount;
+};
 
-    std::cout << "setando hora para 12 \n";
-    t.setHora(23);
-    t.horario_universal();
-    t.horario_AM_PM();
+void display_balance(const Money balance)
+{
+    std::cout << "The balance is: " << balance.amount << std::endl;
+}
 
-    std::cout << "setando minuto para 59 \n";
-    t.setMinuto(59);
-    t.horario_universal();
-    t.horario_AM_PM();
+int main(int argc, char* argv[])
+{
+    Money payable{ 79.99 };
 
-    std::cout << "setando segundo para 59 \n";
-    t.setSegundo(59);
-    t.horario_universal();
-    t.horario_AM_PM();
-
-    std::cout << "tick():..\n";
-    t.tick();
-    t.horario_universal();
-    t.horario_AM_PM();
-
-    std::cout << "tick():..\n";
-    t.tick();
-    t.horario_universal();
-    t.horario_AM_PM();
+    display_balance(payable);
+    display_balance(49.95);
+    display_balance(9.99f);
 
     return 0;
 }
