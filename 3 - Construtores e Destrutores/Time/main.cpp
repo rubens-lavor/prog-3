@@ -29,16 +29,20 @@ class Time {
         setHora(0);
         setMinuto(0);
         setSegundo(segundo);
+
+        std::cout<<"contrutor de conversão int para Time"<< std::endl;
     }
 
     Time (const Time &t){
-        
+        std::cout<<"contrutor de cópia"<< std::endl;
     }
 
     explicit Time(double hora) {
         setHora(hora);
         setMinuto(0);
         setSegundo(0);
+
+        std::cout<<"contrutor de conversão double para Time"<< std::endl;
     }
 
     void tick() {
@@ -151,6 +155,7 @@ int main() {
     return 0;
 }
 
+/*
 #include <iostream>
 
 class Money
@@ -177,3 +182,4 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+*/
