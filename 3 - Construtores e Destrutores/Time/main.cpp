@@ -2,16 +2,15 @@
 
 class Time {
    private:
-    //std::vector<std::pair<int, int>> horarios{{}, {}, {}};
     std::string horario{};
     int hora{};
     int minuto{};
     int segundo{};
 
    public:
-    //construtor explicito
+    //construtor padrão explícito 
     explicit Time() : horario{"00:00:00"} {
-        std::cout << "Construtor explícito padrão" << std::endl;
+        std::cout << "Construtor padrão explícito" << std::endl;
     }
 
     //Construtor que inicializa como parâmetros as horas e os minutos
@@ -26,7 +25,7 @@ class Time {
 
     //Construtor explícito de conversão de int para Time
     explicit Time(int segundo) {
-        this->segundo=segundo;
+        this->segundo = segundo;
         std::cout << "Construtor de conversão int para Time" << std::endl;
     }
 
@@ -37,14 +36,16 @@ class Time {
 
     //Construtor explícito de conversão de double para Time
     explicit Time(double hora) {
-        this->hora=hora;
+        this->hora = hora;
         std::cout << "Construtor de conversão double para Time" << std::endl;
     }
 };
 
 void copia_conversao(const Time t) {
+    //se o parametro for um objeto Time chama o construtor de cópia
+    //se o parametro for int chama o construtor de conversão int para Time
+    //se o parametro for double chama o construtor de conversão double para Time
 }
-
 
 int main() {
     Time t{};
