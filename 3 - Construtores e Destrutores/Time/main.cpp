@@ -42,20 +42,18 @@ class Time {
     }
 };
 
-void construtor_de_conversao(const Time t) {
+void copia_conversao(const Time t) {
 }
 
-void construtor_copia(const Time t) {
-}
 
 int main() {
     Time t{};
     Time t2 = {2, 3};
     std::cout << "\n";
 
-    construtor_copia(t);
-    construtor_de_conversao((Time)1);
-    construtor_de_conversao((Time)1.0);
+    copia_conversao(t);
+    copia_conversao((Time)1);
+    copia_conversao((Time)1.0);
 
     std::cout << "\n";
     return 0;
