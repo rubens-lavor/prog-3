@@ -1,7 +1,7 @@
 
 ## Para compilar e executar o programa
 
-Abra o diretório Time no terminal de digite os comandos:
+Abra o diretório no terminal de digite os comandos:
 
 
     $ make all
