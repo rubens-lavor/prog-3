@@ -1,7 +1,7 @@
 #ifndef DEPARTAMENTO_H
 #define DEPARTAMENTO_H
 
-#include "Funcionario.hpp"
+#include "funcionario.h"
 #include <vector>
 #include <memory>
 

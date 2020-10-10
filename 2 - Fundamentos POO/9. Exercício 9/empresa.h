@@ -1,7 +1,7 @@
 #ifndef EMPRESA_H
 #define EMPRESA_H
 
-#include "Departamento.hpp"
+#include "departamento.h"
 
 class Empresa {
    private:

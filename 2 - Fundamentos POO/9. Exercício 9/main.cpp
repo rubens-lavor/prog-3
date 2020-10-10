@@ -1,4 +1,4 @@
-#include "Empresa.hpp"
+#include "empresa.h"
 
 int main() {
     std::shared_ptr<Funcionario> f1(new Funcionario("José"));
