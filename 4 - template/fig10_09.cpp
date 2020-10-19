@@ -9,17 +9,6 @@ using namespace std;
 
 template <class Type>
 void funcaoArray(Array<Type> array1, Array<Type> array2) {
-    if (typeid(string).name() == typeid(array1[0]).name()) {
-        array1.setString();
-    }
-
-    if (typeid(int).name() == typeid(array1[0]).name()) {
-        array1.setInt();
-    }
-
-    if (typeid(float).name() == typeid(array1[0]).name()) {
-        array1.setFloat();
-    }
 
     cout << "Size of Array array1 is "
          << array1.getSize()
@@ -109,6 +98,21 @@ void funcaoArray(Array<Type> array1, Array<Type> array2) {
     }*/
 
     //array1.setMil(array1[0], 5);
+
+    if (typeid(string).name() == typeid(array1[0]).name()) {
+        array1.setString();
+    }
+
+    if (typeid(int).name() == typeid(array1[0]).name()) {
+        array1.setInt();
+    }
+
+    if (typeid(float).name() == typeid(array1[0]).name()) {
+        array1.setFloat();
+    }
+
+
+
     cout << "array1:\n"
          << array1;
 
