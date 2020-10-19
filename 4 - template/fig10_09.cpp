@@ -9,15 +9,16 @@ using namespace std;
 
 template <class Type>
 void funcaoArray(Array<Type> array1, Array<Type> array2) {
-
-
     if (typeid(string).name() == typeid(array1[0]).name()) {
         array1.setString();
     }
 
-
     if (typeid(int).name() == typeid(array1[0]).name()) {
         array1.setInt();
+    }
+
+    if (typeid(float).name() == typeid(array1[0]).name()) {
+        array1.setFloat();
     }
 
     cout << "Size of Array array1 is "
@@ -77,10 +78,7 @@ void funcaoArray(Array<Type> array1, Array<Type> array2) {
 
     //Type elemento = 1000;
 
-    
-
-
-        /*
+    /*
 
     void setMil(Type elemento, int indice) {
 
@@ -110,50 +108,33 @@ void funcaoArray(Array<Type> array1, Array<Type> array2) {
       
     }*/
 
-        //array1.setMil(array1[0], 5);
-        cout << "array1:\n"
-             << array1;
+    //array1.setMil(array1[0], 5);
+    cout << "array1:\n"
+         << array1;
 
-        try {
-            cout << "\nAttempt to assign 1000 to array1[15]" << endl;
-            //array1.setMil(array1[0], 15);  // ERROR: subscript out of range
-        }  // end try
-        catch (out_of_range &ex) {
-            cout << "An exception occurred: " << ex.what() << endl;
-        }  // end catch
-    }
+    try {
+        cout << "\nAttempt to assign 1000 to array1[15]" << endl;
+        //array1.setMil(array1[0], 15);  // ERROR: subscript out of range
+    }  // end try
+    catch (out_of_range &ex) {
+        cout << "An exception occurred: " << ex.what() << endl;
+    }  // end catch
+}
 
-    int main() {
-        Array<string> str1(7);  // seven-element Array
-        Array<string> str2;     // 10-element Array by default
-        //Array <string> str3(7);
-
-        funcaoArray(str1, str2);
-
-    Array<int> int1;  // seven-element Array
-    Array<int> int2;     // 10-element Array by default
-
-    funcaoArray(int1,int2);
-
-    /*
-    Array<float> flt1(7);  // seven-element Array
-    Array<float> flt2(5);     // 10-element Array by default
-
-    funcaoArray(flt1,flt2);
-  
-    Array<char> c1(7);  // seven-element Array
-    Array<char> c2;     // 10-element Array by default
-
-    funcaoArray(c1,c2);
+int main() {
     Array<string> str1(7);  // seven-element Array
     Array<string> str2;     // 10-element Array by default
+    //Array <string> str3(7);
 
-    funcaoArray(str1,str2);
+    funcaoArray(str1, str2);
 
+    Array<int> int1;  // seven-element Array
+    Array<int> int2;  // 10-element Array by default
 
-    
-    
-    */
-        // print integers1 size and contents
+    funcaoArray(int1, int2);
 
-    }  // end main
+    Array<float> flt1(7);  // seven-element Array
+    Array<float> flt2(5);  // 10-element Array by default
+
+    funcaoArray(flt1, flt2);
+}

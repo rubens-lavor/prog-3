@@ -34,6 +34,7 @@ class Array {
 
     // destructor for class Array
     //template <class Type>
+
     ~Array() {
         delete[] ptr;  // release pointer-based array space
     }                  // end destructor
@@ -101,13 +102,17 @@ class Array {
         return ptr[subscript];  // returns copy of this element
     }
     // end function operator<<
-    Type setString() {
+    void setString() {
         cout << "\nolá string\n";
-        ptr[5] = Type{1000};
+        
     }
-    Type setInt() {
+    void setInt() {
         cout << "\nolá int\n";
-        ptr[5] = <Type>1000;
+        
+    }
+    void setFloat() {
+        cout << "\nolá float\n";
+        
     }
 
    private:
