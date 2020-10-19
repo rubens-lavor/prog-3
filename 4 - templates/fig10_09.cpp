@@ -3,8 +3,11 @@
 #include <iostream>
 #include <stdexcept>
 
+#include <typeinfo>
+
 #include "Array.h"
 using namespace std;
+
 
 int main() {
     Array<string> integers1(7);  // seven-element Array
@@ -72,16 +75,41 @@ int main() {
 
     // use overloaded subscript operator to create lvalue
     cout << "\n\nAssigning 1000 to integers1[5]" << endl;
-    integers1[5] = 1000;
+
+    auto tipo = integers1[0];
+    /*
+    cout << "\n string -> " << typeid( string ).name() << endl;
+    cout << "\n char -> " << typeid( char ).name() << endl;
+    */
+
+
+
+    integers1[5] = integers1.setMil(tipo);
     cout << "integers1:\n"
          << integers1;
 
+
+    //tipo = 3;
+    /*
+
+    
+   NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+
+o -> PKc
+
+5ArrayINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE 
+    
+    */
+
+
     // attempt to use out-of-range subscript
+    
     try {
         cout << "\nAttempt to assign 1000 to integers1[15]" << endl;
-        integers1[15] = 1000;  // ERROR: subscript out of range
+        integers1[15] = integers1.setMil(integers1[0]);  // ERROR: subscript out of range
     }                          // end try
     catch (out_of_range &ex) {
         cout << "An exception occurred: " << ex.what() << endl;
     }  // end catch
+    
 }  // end main

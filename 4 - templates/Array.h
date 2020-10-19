@@ -46,7 +46,7 @@ class Array {
           ptr(new Type[size]) {
         ptr = new Type[arraySize];
         for (size_t i = 0; i < size; ++i)
-            ptr[i] = 0;  // set pointer-based array element
+            ptr[i] = {};  // set pointer-based array element
     }
 
     //template <class Type>
@@ -69,15 +69,13 @@ class Array {
         return size;  // number of elements in Array
     }
 
-    
     Type getPtr(size_t indice) const {
         return ptr[indice];
     }
 
     void setPtr(size_t indice, Type elemento) {
-        ptr[indice] = elemento; 
+        ptr[indice] = elemento;
     }
-    
 
     //template <class Type>
     const Array<Type> &operator=(const Array &right) {
@@ -86,10 +84,10 @@ class Array {
             // for Arrays of different sizes, deallocate original
             // left-side Array, then allocate new left-side Array
             if (size != right.size) {
-                delete[] ptr;         // release space
-                size = right.size;    // resize this object
+                delete[] ptr;          // release space
+                size = right.size;     // resize this object
                 ptr = new Type[size];  // create space for Array copy
-            }                         // end inner if
+            }                          // end inner if
 
             for (size_t i = 0; i < size; ++i)
                 ptr[i] = right.ptr[i];  // copy array into object
@@ -128,6 +126,10 @@ class Array {
         return ptr[subscript];  // returns copy of this element
     }
     // end function operator<<
+    Type setMil(const Type elemento) {
+        
+        return "1000";
+    }
 
    private:
     //Type *vetor;
@@ -138,11 +140,11 @@ class Array {
 template <class Type>
 istream &operator>>(istream &input, Array<Type> &a) {
     Type elemento;
-    for (size_t i = 0; i < a.getSize(); ++i){
+    for (size_t i = 0; i < a.getSize(); ++i) {
         input >> elemento;
         a.setPtr(i, elemento);
     }
-        //input >> a.ptr[i];
+    //input >> a.ptr[i];
 
     return input;  // enables cin >> x >> y;
 }  // end function
@@ -163,5 +165,7 @@ ostream &operator<<(ostream &output, const Array<Type> &a) {
 
     return output;  // enables cout << x << y;
 }  // end class Array
+
+//template <class Type>
 
 #endif
