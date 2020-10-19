@@ -3,7 +3,7 @@ CXXFLAGS = -std=c++17 -Wall -Werror
 LDFLAGS = 
 
 
-APPNAME = main
+APPNAME = fig10_09
 EXT = .cpp
 SRCDIR = .
 OBJDIR = .
