@@ -15,7 +15,8 @@ class Array {
     template <typename>
     friend std::istream &operator>>(std::istream &, Array<Type> &);
 
-    template <typename> void setMil(const Array<Type> &a, Type valor);
+    template <typename>
+    void setMil(const Array<Type> &a, Type valor);
 
    public:
     explicit Array(int arraySize = 10)
