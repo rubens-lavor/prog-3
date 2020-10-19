@@ -43,7 +43,7 @@ class Array {
     //explicit Array<Type>():
     explicit Array(int arraySize = 10)
         : size(arraySize > 0 ? arraySize : throw invalid_argument("Array size must be greater than 0")),
-          ptr(new int[size]) {
+          ptr(new Type[size]) {
         ptr = new Type[arraySize];
         for (size_t i = 0; i < size; ++i)
             ptr[i] = 0;  // set pointer-based array element
@@ -52,7 +52,7 @@ class Array {
     //template <class Type>
     Array(const Array &arrayToCopy)
         : size(arrayToCopy.size),
-          ptr(new int[size]) {
+          ptr(new Type[size]) {
         for (size_t i = 0; i < size; ++i)
             ptr[i] = arrayToCopy.ptr[i];  // copy into object
     }                                     // end Array copy constructor
@@ -75,7 +75,7 @@ class Array {
     }
 
     void setPtr(size_t indice, Type elemento) {
-        this->ptr[indice] = elemento; 
+        ptr[indice] = elemento; 
     }
     
 
@@ -88,7 +88,7 @@ class Array {
             if (size != right.size) {
                 delete[] ptr;         // release space
                 size = right.size;    // resize this object
-                ptr = new int[size];  // create space for Array copy
+                ptr = new Type[size];  // create space for Array copy
             }                         // end inner if
 
             for (size_t i = 0; i < size; ++i)
@@ -137,9 +137,11 @@ class Array {
 
 template <class Type>
 istream &operator>>(istream &input, Array<Type> &a) {
-
-    for (size_t i = 0; i < a.getSize(); ++i)
-        a.setPtr(i, input);
+    Type elemento;
+    for (size_t i = 0; i < a.getSize(); ++i){
+        input >> elemento;
+        a.setPtr(i, elemento);
+    }
         //input >> a.ptr[i];
 
     return input;  // enables cin >> x >> y;

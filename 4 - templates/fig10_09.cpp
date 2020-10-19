@@ -7,8 +7,8 @@
 using namespace std;
 
 int main() {
-    Array<int> integers1(7);  // seven-element Array
-    Array<int> integers2;     // 10-element Array by default
+    Array<string> integers1(7);  // seven-element Array
+    Array<string> integers2;     // 10-element Array by default
 
     // print integers1 size and contents
     
@@ -43,7 +43,7 @@ int main() {
 
     // create Array integers3 using integers1 as an
     // initializer; print size and contents
-    Array<int> integers3(integers1);  // invokes copy constructor
+    Array<string> integers3(integers1);  // invokes copy constructor
 
     cout << "\nSize of Array integers3 is "
          << integers3.getSize()
