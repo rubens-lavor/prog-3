@@ -3,11 +3,22 @@
 #include <iostream>
 #include <stdexcept>
 #include <typeinfo>
+
 #include "Array.h"
 using namespace std;
 
 template <class Type>
-void funcaoArray (Array<Type> array1, Array<Type> array2){
+void funcaoArray(Array<Type> array1, Array<Type> array2) {
+
+
+    if (typeid(string).name() == typeid(array1[0]).name()) {
+        array1.setString();
+    }
+
+
+    if (typeid(int).name() == typeid(array1[0]).name()) {
+        array1.setInt();
+    }
 
     cout << "Size of Array array1 is "
          << array1.getSize()
@@ -21,7 +32,7 @@ void funcaoArray (Array<Type> array1, Array<Type> array2){
          << array2.getSize();
 
     // input and print array1 and array2
-    cout << "\nEnter 17 integers:" << endl;
+    cout << "\nEnter " << array1.getSize() + array2.getSize() << " values:" << endl;
     cin >> array1 >> array2;
 
     cout << "\nAfter input, the Arrays contain:\n"
@@ -29,22 +40,22 @@ void funcaoArray (Array<Type> array1, Array<Type> array2){
          << array1
          << "array2:\n"
          << array2;
-    
+
     // use overloaded inequality (!=) operator
     cout << "\nEvaluating: array1 != array2" << endl;
 
-    if ( !(array1 == array2)){
-
+    if (!(array1 == array2)) {
         cout << "array1 and array2 are not equal" << endl;
     }
 
-    Array <typeid(array1[0]).type_info::name()> array3(array1);  // invokes copy constructor
+    //Array <string> array3(array1);  // invokes copy constructor
+    Array<Type> array3(array1);
 
     cout << "\nSize of Array array3 is "
          << array3.getSize()
          << "\nArray after initialization:\n"
          << array3;
-        
+
     cout << "\nAssigning array2 to array1:" << endl;
     array1 = array2;
 
@@ -52,7 +63,6 @@ void funcaoArray (Array<Type> array1, Array<Type> array2){
          << array1
          << "array2:\n"
          << array2;
-
 
     cout << "\nEvaluating: array1 == array2" << endl;
 
@@ -65,61 +75,85 @@ void funcaoArray (Array<Type> array1, Array<Type> array2){
     // use overloaded subscript operator to create lvalue
     cout << "\n\nAssigning 1000 to array1[5]" << endl;
 
-    //auto tipo = array1[0];
+    //Type elemento = 1000;
 
-    /*
-    cout << "\n string -> " << typeid( string ).name() << endl;
-    cout << "\n char -> " << typeid( char ).name() << endl;
-    */
-
-
-
-    array1[5] = array1.setMil(array1[0]);
-    cout << "array1:\n"
-         << array1;
-    
-    try {
-        cout << "\nAttempt to assign 1000 to array1[15]" << endl;
-        array1[15] = array1.setMil(array1[0]);  // ERROR: subscript out of range
-    }                          // end try
-    catch (out_of_range &ex) {
-        cout << "An exception occurred: " << ex.what() << endl;
-    }  // end catch
-}
-
-
-int main() {
     
 
-    Array<string> str1(7);  // seven-element Array
-    Array<string> str2;     // 10-element Array by default
 
-    funcaoArray(str1,str2);
-    
-    Array<char> c1(7);  // seven-element Array
-    Array<char> c2;     // 10-element Array by default
+        /*
 
-    funcaoArray(c1,c2);
-    /*
-    Array<string> str1(7);  // seven-element Array
-    Array<string> str2;     // 10-element Array by default
+    void setMil(Type elemento, int indice) {
 
-    funcaoArray(str1,str2);
+        //Type el = 1000;
+            //elemento = 1000;
+            //ptr[indice]="1000";
+            setPtr(indice, "1000");
+            //return "1000";
+        }
+       
+            //ptr[indice]=1000;
+            //elemento = 1000;
+            //ptr[indice]=1000;
+            setPtr(indice, 1000);
+            //return 1000;
+        }
 
+        if (typeid(float).name() == typeid(elemento).name()) {
+            //ptr[indice]=1000;
+            //elemento = 1000;
+            //ptr[indice]=1000.00;
+            setPtr(indice, 1000.00);
+            //return 1000.00;
+        }
 
-    Array<int> int1(7);  // seven-element Array
+        //return 0;
+      
+    }*/
+
+        //array1.setMil(array1[0], 5);
+        cout << "array1:\n"
+             << array1;
+
+        try {
+            cout << "\nAttempt to assign 1000 to array1[15]" << endl;
+            //array1.setMil(array1[0], 15);  // ERROR: subscript out of range
+        }  // end try
+        catch (out_of_range &ex) {
+            cout << "An exception occurred: " << ex.what() << endl;
+        }  // end catch
+    }
+
+    int main() {
+        Array<string> str1(7);  // seven-element Array
+        Array<string> str2;     // 10-element Array by default
+        //Array <string> str3(7);
+
+        funcaoArray(str1, str2);
+
+    Array<int> int1;  // seven-element Array
     Array<int> int2;     // 10-element Array by default
 
     funcaoArray(int1,int2);
 
-    Array<double> d1(7);  // seven-element Array
-    Array<double> d2;     // 10-element Array by default
+    /*
+    Array<float> flt1(7);  // seven-element Array
+    Array<float> flt2(5);     // 10-element Array by default
 
-    funcaoArray(d1,d2);
+    funcaoArray(flt1,flt2);
+  
+    Array<char> c1(7);  // seven-element Array
+    Array<char> c2;     // 10-element Array by default
+
+    funcaoArray(c1,c2);
+    Array<string> str1(7);  // seven-element Array
+    Array<string> str2;     // 10-element Array by default
+
+    funcaoArray(str1,str2);
+
+
+    
     
     */
-    // print integers1 size and contents
-    
-    
-    
-}  // end main
+        // print integers1 size and contents
+
+    }  // end main

@@ -101,21 +101,13 @@ class Array {
         return ptr[subscript];  // returns copy of this element
     }
     // end function operator<<
-    Type setMil(const Type elemento) {
-        if (typeid(string).name() == typeid(elemento).name()) {
-            return "1000";
-        }
-
-        /*
-        if (typeid(elemento).name() == typeid(int).name()) {
-            return 1000;
-        }
-        
-        if (typeid(elemento).name() == typeid(double).name()) {
-            return 1000.00;
-        }
-        */
-       return "-1";
+    Type setString() {
+        cout << "\nolá string\n";
+        ptr[5] = Type{1000};
+    }
+    Type setInt() {
+        cout << "\nolá int\n";
+        ptr[5] = <Type>1000;
     }
 
    private:
