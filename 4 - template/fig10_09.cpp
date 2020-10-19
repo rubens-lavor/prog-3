@@ -69,42 +69,10 @@ void funcaoArray(Array<Type> array1, Array<Type> array2) {
     // use overloaded subscript operator to create lvalue
     cout << "\n\nAssigning 1000 to array1[5]" << endl;
 
-    //Type elemento = 1000;
-
-    /*
-
-    void setMil(Type elemento, int indice) {
-
-        //Type el = 1000;
-            //elemento = 1000;
-            //ptr[indice]="1000";
-            setPtr(indice, "1000");
-            //return "1000";
-        }
-       
-            //ptr[indice]=1000;
-            //elemento = 1000;
-            //ptr[indice]=1000;
-            setPtr(indice, 1000);
-            //return 1000;
-        }
-
-        if (typeid(float).name() == typeid(elemento).name()) {
-            //ptr[indice]=1000;
-            //elemento = 1000;
-            //ptr[indice]=1000.00;
-            setPtr(indice, 1000.00);
-            //return 1000.00;
-        }
-
-        //return 0;
-      
-    }*/
-
-    //array1.setMil(array1[0], 5);
 
     if (typeid(string).name() == typeid(array1[0]).name()) {
         array1.setString();
+        //array1.setPtr(5,"1000");
     }
 
     if (typeid(int).name() == typeid(array1[0]).name()) {
@@ -114,11 +82,7 @@ void funcaoArray(Array<Type> array1, Array<Type> array2) {
 
     if (typeid(float).name() == typeid(array1[0]).name()) {
         array1.setFloat();
-        try {
-            array1.setPtr(5, 1000.00);
-        } catch (out_of_range &ex) {
-            cout << "An exception occurred: " << ex.what() << endl;
-        }
+        array1.setPtr(5, 1000.00);
     }
 
     cout << fixed;
@@ -128,8 +92,7 @@ void funcaoArray(Array<Type> array1, Array<Type> array2) {
 
     try {
         cout << "\nAttempt to assign 1000 to array1[15]" << endl;
-    } 
-    catch (out_of_range &ex) {
+    } catch (out_of_range &ex) {
         cout << "An exception occurred: " << ex.what() << endl;
     }  // end catch
 }
@@ -138,7 +101,7 @@ int main() {
     /*
     Array<string> str1(7);  // seven-element Array
     Array<string> str2;     // 10-element Array by default
-    //Array <string> str3(7);
+    
 
     funcaoArray(str1, str2);
     */

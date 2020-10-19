@@ -15,9 +15,6 @@ class Array {
     template <typename>
     friend std::istream &operator>>(std::istream &, Array<Type> &);
 
-    template <typename>
-    void setMil(const Array<Type> &a, Type valor);
-
    public:
     explicit Array(int arraySize = 10)
         : size(arraySize > 0 ? arraySize : throw invalid_argument("Array size must be greater than 0")),
@@ -149,12 +146,5 @@ ostream &operator<<(ostream &output, const Array<Type> &a) {
 
     return output;  // enables cout << x << y;
 }  // end class Array
-
-//template <class Type>
-
-template <class Type>
-void setMil(const Array<Type> &a, Type valor) {
-    a.setPtr(5, valor);
-}
 
 #endif
