@@ -16,31 +16,6 @@ class Array {
     friend std::istream &operator>>(std::istream &, Array<Type> &);
 
    public:
-    /*
-    explicit Array<Type>(int = 10);  // default constructor
-    Array<Type>(const Array &);      // copy constructor
-    ~Array<Type>();                  // destructor
-    size_t getSize() const;    // return size
-
-    const Array<Type> &operator=(const Array &);  // assignment operator
-    bool operator==(const Array<Type> &) const;   // equality operator
-
-    // inequality operator; returns opposite of == operator
-    bool operator!=(const Array &right) const {
-        return !(*this == right);  // invokes Array::operator==
-    }                              // end function operator!=
-
-    // subscript operator for non-const objects returns modifiable lvalue
-    Type &operator[](size_t);
-
-    // subscript operator for const objects returns rvalue
-    Type operator[](size_t) const;
-    */
-
-    //template <class Type>
-
-    // default constructor for class Array (default size 10)
-    //explicit Array<Type>():
     explicit Array(int arraySize = 10)
         : size(arraySize > 0 ? arraySize : throw invalid_argument("Array size must be greater than 0")),
           ptr(new Type[size]) {
@@ -127,8 +102,20 @@ class Array {
     }
     // end function operator<<
     Type setMil(const Type elemento) {
+        if (typeid(string).name() == typeid(elemento).name()) {
+            return "1000";
+        }
+
+        /*
+        if (typeid(elemento).name() == typeid(int).name()) {
+            return 1000;
+        }
         
-        return "1000";
+        if (typeid(elemento).name() == typeid(double).name()) {
+            return 1000.00;
+        }
+        */
+       return "-1";
     }
 
    private:

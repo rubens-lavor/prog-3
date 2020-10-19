@@ -7,7 +7,7 @@
 using namespace std;
 
 template <class Type>
-void funcaoArray (Array<Type> &array1, Array<Type> &array2){
+void funcaoArray (Array<Type> array1, Array<Type> array2){
 
     cout << "Size of Array array1 is "
          << array1.getSize()
@@ -37,7 +37,8 @@ void funcaoArray (Array<Type> &array1, Array<Type> &array2){
 
         cout << "array1 and array2 are not equal" << endl;
     }
-    Array<string> array3(array1);  // invokes copy constructor
+
+    Array <typeid(array1[0]).type_info::name()> array3(array1);  // invokes copy constructor
 
     cout << "\nSize of Array array3 is "
          << array3.getSize()
@@ -64,7 +65,7 @@ void funcaoArray (Array<Type> &array1, Array<Type> &array2){
     // use overloaded subscript operator to create lvalue
     cout << "\n\nAssigning 1000 to array1[5]" << endl;
 
-    auto tipo = array1[0];
+    //auto tipo = array1[0];
 
     /*
     cout << "\n string -> " << typeid( string ).name() << endl;
@@ -73,7 +74,7 @@ void funcaoArray (Array<Type> &array1, Array<Type> &array2){
 
 
 
-    array1[5] = array1.setMil(tipo);
+    array1[5] = array1.setMil(array1[0]);
     cout << "array1:\n"
          << array1;
     
@@ -88,22 +89,33 @@ void funcaoArray (Array<Type> &array1, Array<Type> &array2){
 
 
 int main() {
+    
+
+    Array<string> str1(7);  // seven-element Array
+    Array<string> str2;     // 10-element Array by default
+
+    funcaoArray(str1,str2);
+    
+    Array<char> c1(7);  // seven-element Array
+    Array<char> c2;     // 10-element Array by default
+
+    funcaoArray(c1,c2);
+    /*
     Array<string> str1(7);  // seven-element Array
     Array<string> str2;     // 10-element Array by default
 
     funcaoArray(str1,str2);
 
-    /*
 
     Array<int> int1(7);  // seven-element Array
     Array<int> int2;     // 10-element Array by default
 
     funcaoArray(int1,int2);
 
-    Array<string> str1(7);  // seven-element Array
-    Array<string> str2;     // 10-element Array by default
+    Array<double> d1(7);  // seven-element Array
+    Array<double> d2;     // 10-element Array by default
 
-    funcaoArray(str1,str2);
+    funcaoArray(d1,d2);
     
     */
     // print integers1 size and contents
