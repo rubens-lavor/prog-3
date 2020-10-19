@@ -2,81 +2,70 @@
 // Array class test program.
 #include <iostream>
 #include <stdexcept>
-
 #include <typeinfo>
-
 #include "Array.h"
 using namespace std;
 
+template <class Type>
+void funcaoArray (Array<Type> &array1, Array<Type> &array2){
 
-int main() {
-    Array<string> integers1(7);  // seven-element Array
-    Array<string> integers2;     // 10-element Array by default
-
-    // print integers1 size and contents
-    
-    cout << "Size of Array integers1 is "
-         << integers1.getSize()
+    cout << "Size of Array array1 is "
+         << array1.getSize()
          << "\nArray after initialization:\n"
-         << integers1;
+         << array1.getSize();
 
-    // print integers2 size and contents
-    cout << "\nSize of Array integers2 is "
-         << integers2.getSize()
+    // print array2 size and contents
+    cout << "\nSize of Array array2 is "
+         << array2.getSize()
          << "\nArray after initialization:\n"
-         << integers2;
+         << array2.getSize();
 
-    // input and print integers1 and integers2
+    // input and print array1 and array2
     cout << "\nEnter 17 integers:" << endl;
-    cin >> integers1 >> integers2;
+    cin >> array1 >> array2;
 
     cout << "\nAfter input, the Arrays contain:\n"
-         << "integers1:\n"
-         << integers1
-         << "integers2:\n"
-         << integers2;
+         << "array1:\n"
+         << array1
+         << "array2:\n"
+         << array2;
     
     // use overloaded inequality (!=) operator
-    cout << "\nEvaluating: integers1 != integers2" << endl;
+    cout << "\nEvaluating: array1 != array2" << endl;
 
-    if ( !(integers1 == integers2)){
+    if ( !(array1 == array2)){
 
-        cout << "integers1 and integers2 are not equal" << endl;
+        cout << "array1 and array2 are not equal" << endl;
     }
+    Array<string> array3(array1);  // invokes copy constructor
 
-    // create Array integers3 using integers1 as an
-    // initializer; print size and contents
-    Array<string> integers3(integers1);  // invokes copy constructor
-
-    cout << "\nSize of Array integers3 is "
-         << integers3.getSize()
+    cout << "\nSize of Array array3 is "
+         << array3.getSize()
          << "\nArray after initialization:\n"
-         << integers3;
+         << array3;
         
+    cout << "\nAssigning array2 to array1:" << endl;
+    array1 = array2;
 
-    // use overloaded assignment (=) operator
-    cout << "\nAssigning integers2 to integers1:" << endl;
-    integers1 = integers2;  // note target Array is smaller
-
-    cout << "integers1:\n"
-         << integers1
-         << "integers2:\n"
-         << integers2;
+    cout << "array1:\n"
+         << array1
+         << "array2:\n"
+         << array2;
 
 
-    // use overloaded equality (==) operator
-    cout << "\nEvaluating: integers1 == integers2" << endl;
+    cout << "\nEvaluating: array1 == array2" << endl;
 
-    if (integers1 == integers2)
-        cout << "integers1 and integers2 are equal" << endl;
+    if (array1 == array2)
+        cout << "array1 and array2 are equal" << endl;
 
     // use overloaded subscript operator to create rvalue
-    cout << "\nintegers1[5] is " << integers1[5];
+    cout << "\narray1[5] is " << array1[5];
 
     // use overloaded subscript operator to create lvalue
-    cout << "\n\nAssigning 1000 to integers1[5]" << endl;
+    cout << "\n\nAssigning 1000 to array1[5]" << endl;
 
-    auto tipo = integers1[0];
+    auto tipo = array1[0];
+
     /*
     cout << "\n string -> " << typeid( string ).name() << endl;
     cout << "\n char -> " << typeid( char ).name() << endl;
@@ -84,32 +73,41 @@ int main() {
 
 
 
-    integers1[5] = integers1.setMil(tipo);
-    cout << "integers1:\n"
-         << integers1;
-
-
-    //tipo = 3;
-    /*
-
-    
-   NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
-
-o -> PKc
-
-5ArrayINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE 
-    
-    */
-
-
-    // attempt to use out-of-range subscript
+    array1[5] = array1.setMil(tipo);
+    cout << "array1:\n"
+         << array1;
     
     try {
-        cout << "\nAttempt to assign 1000 to integers1[15]" << endl;
-        integers1[15] = integers1.setMil(integers1[0]);  // ERROR: subscript out of range
+        cout << "\nAttempt to assign 1000 to array1[15]" << endl;
+        array1[15] = array1.setMil(array1[0]);  // ERROR: subscript out of range
     }                          // end try
     catch (out_of_range &ex) {
         cout << "An exception occurred: " << ex.what() << endl;
     }  // end catch
+}
+
+
+int main() {
+    Array<string> str1(7);  // seven-element Array
+    Array<string> str2;     // 10-element Array by default
+
+    funcaoArray(str1,str2);
+
+    /*
+
+    Array<int> int1(7);  // seven-element Array
+    Array<int> int2;     // 10-element Array by default
+
+    funcaoArray(int1,int2);
+
+    Array<string> str1(7);  // seven-element Array
+    Array<string> str2;     // 10-element Array by default
+
+    funcaoArray(str1,str2);
+    
+    */
+    // print integers1 size and contents
+    
+    
     
 }  // end main
