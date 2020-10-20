@@ -1,112 +1,98 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
-#include <iomanip>
 #include <iostream>
+#include <iomanip>
 #include <stdexcept>
 
 using namespace std;
-template <class Type>
+
+template <class T>
 class Array {
+    size_t size;
+    T *ptr;
+
     template <typename>
-    friend std::ostream &operator<<(std::ostream &, const Array<Type> &);
+    friend std::ostream &operator<<(std::ostream &, const Array<T> &);
     template <typename>
-    friend std::istream &operator>>(std::istream &, Array<Type> &);
+    friend std::istream &operator>>(std::istream &, Array<T> &);
 
    public:
     explicit Array(int arraySize = 10)
         : size(arraySize > 0 ? arraySize : throw invalid_argument("Array size must be greater than 0")),
-          ptr(new Type[size]) {
-        ptr = new Type[arraySize];
+          ptr(new T[size]) {
+        ptr = new T[arraySize];
         for (size_t i = 0; i < size; ++i)
-            ptr[i] = {};  // set pointer-based array element
+            ptr[i] = {};
     }
 
-    //template <class Type>
     Array(const Array &arrayToCopy)
         : size(arrayToCopy.size),
-          ptr(new Type[size]) {
+          ptr(new T[size]) {
         for (size_t i = 0; i < size; ++i)
-            ptr[i] = arrayToCopy.ptr[i];  // copy into object
-    }                                     // end Array copy constructor
-
-    ~Array() {
-        delete[] ptr;  // release pointer-based array space
-    }                  // end destructor
-
-    size_t getSize() const {
-        return size;  // number of elements in Array
+            ptr[i] = arrayToCopy.ptr[i];
     }
 
-    Type getPtr(size_t indice) const {
+    ~Array() {
+        delete[] ptr;
+    }
+
+    size_t getSize() const {
+        return size;
+    }
+
+    T getPtr(size_t indice) const {
         return ptr[indice];
     }
 
-    void setPtr(size_t indice, Type elemento) {
+    void setPtr(size_t indice, T elemento) {
         ptr[indice] = elemento;
     }
 
-    const Array<Type> &operator=(const Array &right) {
-        if (&right != this)  // avoid self-assignment
-        {
+    const Array<T> &operator=(const Array &right) {
+        if (&right != this) {
             if (size != right.size) {
-                delete[] ptr;          // release space
-                size = right.size;     // resize this object
-                ptr = new Type[size];  // create space for Array copy
-            }                          // end inner if
+                delete[] ptr;
+                size = right.size;
+                ptr = new T[size];
+            }
 
             for (size_t i = 0; i < size; ++i)
-                ptr[i] = right.ptr[i];  // copy array into object
-        }                               // end outer if
+                ptr[i] = right.ptr[i];
+        }
 
-        return *this;  // enables x = y = z, for example
+        return *this;
     }
 
     bool operator==(const Array &right) const {
         if (size != right.size)
-            return false;  // arrays of different number of elements
+            return false;
 
         for (size_t i = 0; i < size; ++i)
             if (ptr[i] != right.ptr[i])
-                return false;  // Array contents are not equal
+                return false;
 
-        return true;  // Arrays are equal
+        return true;
     }
 
-    Type &operator[](size_t subscript) {
-        // check for subscript out-of-range error
+    T &operator[](size_t subscript) {
         if (subscript < 0 || subscript >= size)
             throw out_of_range("Subscript out of range");
 
-        return ptr[subscript];  // reference return
-    }                           // end function operator[]
+        return ptr[subscript];
+    }
 
-    Type operator[](size_t subscript) const {
-        // check for subscript out-of-range error
+    T operator[](size_t subscript) const {
         if (subscript < 0 || subscript >= size)
             throw out_of_range("Subscript out of range");
 
-        return ptr[subscript];  // returns copy of this element
+        return ptr[subscript];
     }
-
-    void setString() {
-        cout << "\nolá string\n";
-    }
-    void setInt() {
-        cout << "\nolá int\n";
-    }
-    void setFloat() {
-        cout << "\nolá float\n";
-    }
-
-   private:
-    size_t size;  // pointer-based array size
-    Type *ptr;    // pointer to first element of pointer-based array
 };
 
-template <class Type>
-istream &operator>>(istream &input, Array<Type> &a) {
-    Type elemento;
+template <class T>
+istream &operator>>(istream &input, Array<T> &a) {
+    T elemento;
     for (size_t i = 0; i < a.getSize(); ++i) {
         input >> elemento;
         a.setPtr(i, elemento);
@@ -115,8 +101,8 @@ istream &operator>>(istream &input, Array<Type> &a) {
     return input;  // enables cin >> x >> y;
 }
 
-template <class Type>
-ostream &operator<<(ostream &output, const Array<Type> &a) {
+template <class T>
+ostream &operator<<(ostream &output, const Array<T> &a) {
     // output private ptr-based array
     for (size_t i = 0; i < a.getSize(); ++i) {
         output << setw(12) << a.getPtr(i);
