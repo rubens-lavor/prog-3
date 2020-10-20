@@ -22,6 +22,15 @@ T funcao(T valor){
     return true;
 }
 
+template <class key,class Value> class Dictionary {
+
+};
+
+
+template <class Value> class Dictionary<string, Value>{
+
+};
+
 int main(){
 
     auto x = funcao(10);
