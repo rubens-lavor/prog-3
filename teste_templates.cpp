@@ -16,7 +16,7 @@ class Array {
     friend std::istream &operator>>(std::istream &, Array<T> &);
 
    public:
-    Array(int arraySize = 10)
+    explicit Array(int arraySize = 10)
         : size(arraySize > 0 ? arraySize : throw invalid_argument("Array size must be greater than 0")),
           ptr(new T[size]) {
         ptr = new T[arraySize];
@@ -296,6 +296,9 @@ void funcaoArray(Array<T> array1, Array<T> array2) {
     cout << "\n\nAssigning 1000 to array1[5]" << endl;
 
 
+    funcao_verifica_array(array1,array2);
+    
+    /*
     if (typeid(string).name() == typeid(array1[0]).name()) {
         array1.setString();
         //array1.setPtr(5,"1000");
@@ -310,6 +313,7 @@ void funcaoArray(Array<T> array1, Array<T> array2) {
         array1.setFloat();
         array1.setPtr(5, 1000.00);
     }
+    */
 
     //cout << fixed;
     //cout << setprecision(2);
@@ -323,6 +327,7 @@ void funcaoArray(Array<T> array1, Array<T> array2) {
     }  // end catch
 }
 
+/*
 template <>
 void funcaoArray(Array<string> array1, Array<string> array2) {
     cout << "Size of Array array1 is "
@@ -407,6 +412,8 @@ void funcaoArray(Array<string> array1, Array<string> array2) {
 
     //cout << fixed;
     //cout << setprecision(2);
+
+    /*
     cout << "array1:\n"
          << array1;
 
@@ -415,12 +422,37 @@ void funcaoArray(Array<string> array1, Array<string> array2) {
     } catch (out_of_range &ex) {
         cout << "An exception occurred: " << ex.what() << endl;
     }  // end catch
+}*/
+
+template <class T>
+void funcao_verifica_array(Array<T> &array1, Array<T> &array2){
+    if (typeid(int).name() == typeid(array1[0]).name()) {
+        array1.setInt();
+        array1.setPtr(5, 1000);
+    }
+
+    if (typeid(float).name() == typeid(array1[0]).name()) {
+        array1.setFloat();
+        array1.setPtr(5, 1000.00);
+    }
+}
+
+template <>
+void funcao_verifica_array(Array<string> &array1, Array<string> &array2){
+    if (typeid(string).name() == typeid(array1[0]).name()) {
+        array1.setString();
+        array1.setPtr(5,"1000");
+    }
 }
 
 int main() {
     Array<int> dict(10);
     Array<int> dict2(10);
     funcaoArray(dict,dict2);
+
+    Array<float> dict3(10);
+    Array<float> dict4(10);
+    funcaoArray(dict3,dict4);
 
     Array<string> dict_specialized(10);
     Array<string> dict_specialized2(10);
