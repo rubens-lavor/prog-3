@@ -20,6 +20,7 @@ class Dictionary {
     }
 };
 
+// Template partial specialization: T is specified to be string.
 template <>
 class Dictionary<string> {
     string* values;
