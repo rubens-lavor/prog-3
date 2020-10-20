@@ -77,12 +77,12 @@ void funcaoArray(Array<Type> array1, Array<Type> array2) {
 
     if (typeid(int).name() == typeid(array1[0]).name()) {
         array1.setInt();
-        //array1.setPtr(5, 1000);
+        array1.setPtr(5, 1000);
     }
 
     if (typeid(float).name() == typeid(array1[0]).name()) {
         array1.setFloat();
-        //array1.setPtr(5, 1000.00);
+        array1.setPtr(5, 1000.00);
     }
 
     cout << fixed;
@@ -100,12 +100,13 @@ void funcaoArray(Array<Type> array1, Array<Type> array2) {
 int main() {
     
     
+    /*
     Array<string> str1(7);  // seven-element Array
     Array<string> str2;     // 10-element Array by default
     
 
     funcaoArray(str1, str2);
-    
+    */
 
     Array<int> int1;  // seven-element Array
     Array<int> int2;  // 10-element Array by default

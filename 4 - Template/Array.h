@@ -1,5 +1,3 @@
-// Fig. 10.10: Array.h
-// Array class definition with overloaded operators.
 #ifndef ARRAY_H
 #define ARRAY_H
 
@@ -32,15 +30,10 @@ class Array {
             ptr[i] = arrayToCopy.ptr[i];  // copy into object
     }                                     // end Array copy constructor
 
-    // destructor for class Array
-    //template <class Type>
-
     ~Array() {
         delete[] ptr;  // release pointer-based array space
     }                  // end destructor
 
-    // return number of elements of Array
-    //template <class Type>
     size_t getSize() const {
         return size;  // number of elements in Array
     }
@@ -53,12 +46,9 @@ class Array {
         ptr[indice] = elemento;
     }
 
-    //template <class Type>
     const Array<Type> &operator=(const Array &right) {
         if (&right != this)  // avoid self-assignment
         {
-            // for Arrays of different sizes, deallocate original
-            // left-side Array, then allocate new left-side Array
             if (size != right.size) {
                 delete[] ptr;          // release space
                 size = right.size;     // resize this object
@@ -71,7 +61,7 @@ class Array {
 
         return *this;  // enables x = y = z, for example
     }
-    //template <class Type>
+
     bool operator==(const Array &right) const {
         if (size != right.size)
             return false;  // arrays of different number of elements
@@ -82,7 +72,7 @@ class Array {
 
         return true;  // Arrays are equal
     }
-    //template <class Type>
+
     Type &operator[](size_t subscript) {
         // check for subscript out-of-range error
         if (subscript < 0 || subscript >= size)
@@ -91,9 +81,6 @@ class Array {
         return ptr[subscript];  // reference return
     }                           // end function operator[]
 
-    // overloaded subscript operator for const Arrays
-    // const reference return creates an rvalue
-    //template <class Type>
     Type operator[](size_t subscript) const {
         // check for subscript out-of-range error
         if (subscript < 0 || subscript >= size)
@@ -101,7 +88,7 @@ class Array {
 
         return ptr[subscript];  // returns copy of this element
     }
-    // end function operator<<
+
     void setString() {
         cout << "\nolá string\n";
     }
@@ -113,7 +100,6 @@ class Array {
     }
 
    private:
-    //Type *vetor;
     size_t size;  // pointer-based array size
     Type *ptr;    // pointer to first element of pointer-based array
 };
@@ -125,26 +111,23 @@ istream &operator>>(istream &input, Array<Type> &a) {
         input >> elemento;
         a.setPtr(i, elemento);
     }
-    //input >> a.ptr[i];
 
     return input;  // enables cin >> x >> y;
-}  // end function
+}
 
-// overloaded output operator for class Array
 template <class Type>
 ostream &operator<<(ostream &output, const Array<Type> &a) {
     // output private ptr-based array
     for (size_t i = 0; i < a.getSize(); ++i) {
         output << setw(12) << a.getPtr(i);
-
-        if ((i + 1) % 4 == 0)  // 4 numbers per row of output
+        if ((i + 1) % 4 == 0)
             output << endl;
-    }  // end for
+    }
 
-    if (a.getSize() % 4 != 0)  // end last line of output
+    if (a.getSize() % 4 != 0)
         output << endl;
 
     return output;  // enables cout << x << y;
-}  // end class Array
+}
 
 #endif
