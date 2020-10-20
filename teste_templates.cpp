@@ -2,57 +2,47 @@
 using namespace std;
 
 template <class T>
-T funcao(T valor){
-    
-    if (typeid(string).name() == typeid(valor).name()) {
-        string x = "2";
-        return x;
-     }
+class Dictionary {
+    T* values;
+    int size;
+    int max_size;
 
-    if (typeid(int).name() == typeid(valor).name()) {
-        cout << "\nint\n";
-        return 2;
+   public:
+    Dictionary(int initial_size) : size(0) {
+        max_size = 1;
+        while (initial_size >= max_size)
+            max_size *= 2;
+        values = new T[max_size];
+        cout << "int\n";
     }
-
-    if (typeid(float).name() == typeid(valor).name()) {
-        cout << "\nfloat\n";
-        return 2.5;
+    void setValues() {
+        values[5] = 1000;
     }
-    
-    return true;
-}
-
-template <class key,class Value> class Dictionary {
-
 };
 
+template <>
+class Dictionary<string> {
+    string* values;
+    int size;
+    int max_size;
 
-template <class Value> class Dictionary<string, Value>{
-
+   public:
+    Dictionary(int initial_size) : size(0) {
+        max_size = 1;
+        while (initial_size >= max_size)
+            max_size *= 2;
+        values = new string[max_size];
+        cout << "string\n";
+    }
+    void setValues() {
+        values[5] = "1000";
+    }
 };
 
-int main(){
-
-    auto x = funcao(10);
-
-    cout << x ;
-
-
-    /*
-    if (typeid(string).name() == typeid(funcao(10.50)).name()) {
-        cout << "\nstring\n";
-    }
-
-    if (typeid(int).name() == typeid(funcao(10.50)).name()) {
-        cout << "\nint\n";
-    }
-
-    if (typeid(float).name() == typeid(funcao(10.50)).name()) {
-        cout << "\nfloat\n";
-    }
-
-    */
-
+int main() {
+    Dictionary<int> dict(10);
+    Dictionary<float> dict2(10);
+    Dictionary<string> *dict_specialized = new Dictionary<string>(10);
 
     return 0;
 }
