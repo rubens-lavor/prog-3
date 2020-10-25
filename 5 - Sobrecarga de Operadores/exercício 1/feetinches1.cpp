@@ -2,7 +2,7 @@
 
 void FeetInches::simplify() {
     if (this->inches > 0) {
-        while (this->inches > 12) {
+        while (this->inches >= 12) {
             this->feet ++;
             this->inches -= 12;
         }
