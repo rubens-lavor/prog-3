@@ -57,8 +57,9 @@ bool FeetInches::operator==(const FeetInches &a) {
 istream &operator>>(istream &input, FeetInches &a) {
     input >> a.feet;
     input >> a.inches;
+    a.simplify();
     return input;  // enables cin >> first >> second;
-}  // end function
+}
 
 // overloaded output operator for class FeetInches
 ostream &operator<<(ostream &output, const FeetInches &a) {
