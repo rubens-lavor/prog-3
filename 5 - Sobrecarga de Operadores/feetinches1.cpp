@@ -18,6 +18,8 @@ void FeetInches::simplify() {
 }
 
 FeetInches FeetInches::operator+(const FeetInches &a) {
-    return FeetInches(a.getFeet() + feet, a.getInches()+ inches);
-}  // Overloaded +
-FeetInches operator-(const FeetInches &a, const FeetInches &b) {}  // Overloaded -
+    return FeetInches(feet + a.getFeet(),inches + a.getInches());
+}
+FeetInches FeetInches::operator-(const FeetInches &a) {
+    return FeetInches(feet - a.getFeet(), inches - a.getInches());
+}

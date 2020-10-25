@@ -46,14 +46,13 @@ int main() {
  cout << third.getFeet() << " feet, ";
  cout << third.getInches() << " inches.\n";
 
- /*
  // Assign first - second to third.
  third = first - second;
  // Display the result.
  cout << "first - second = ";
  cout << third.getFeet() << " feet, ";
  cout << third.getInches() << " inches.\n";
- */
+
 
     return 0;
 }
