@@ -1,8 +1,5 @@
 #include <iostream>
 
-//retirar feetinches1.cpp da main!!!!!!!!
-#include "feetinches1.cpp"
-//--------------------------------------
 #include "feetinches1.h"
 using namespace std;
 
@@ -19,12 +16,6 @@ int main() {
     first.setFeet(feet);
     first.setInches(inches);
 
-    //-------------------------------------------
-    /*retirar depois*/
-    cout << first.getFeet() << " feet, ";
-    cout << first.getInches() << " inches.\n";
-    //-------------------------------------------
-
     // Get another distance from the user.
     cout << "Enter another distance in feet and inches: ";
     cin >> feet >> inches;
@@ -32,27 +23,19 @@ int main() {
     second.setFeet(feet);
     second.setInches(inches);
 
-    //-------------------------------------------
-    /*retirar depois*/
-    cout << second.getFeet() << " feet, ";
-    cout << second.getInches() << " inches.\n";
-    //-------------------------------------------
-
-
- // Assign first + second to third.
- third = first + second;
- // Display the result.
- cout << "first + second = ";
- cout << third.getFeet() << " feet, ";
- cout << third.getInches() << " inches.\n";
-
- // Assign first - second to third.
- third = first - second;
- // Display the result.
- cout << "first - second = ";
- cout << third.getFeet() << " feet, ";
- cout << third.getInches() << " inches.\n";
-
+    // Assign first + second to third.
+    third = first + second;
+    // Display the result.
+    cout << "first + second = ";
+    cout << third.getFeet() << " feet, ";
+    cout << third.getInches() << " inches.\n";
+    
+    // Assign first - second to third.
+    third = first - second;
+    // Display the result.
+    cout << "first - second = ";
+    cout << third.getFeet() << " feet, ";
+    cout << third.getInches() << " inches.\n";
 
     return 0;
 }
