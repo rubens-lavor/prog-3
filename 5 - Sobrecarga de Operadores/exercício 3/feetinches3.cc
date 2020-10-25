@@ -36,10 +36,18 @@ FeetInches FeetInches::operator++(int) {
 }
 
 // Overloaded >
-bool FeetInches::operator>(const FeetInches &) {}
+bool FeetInches::operator>(const FeetInches &a) {
+    simplify();
+    return (feet > a.feet);
+}
 
 // Overloaded <
-bool FeetInches::operator<(const FeetInches &) {}
+bool FeetInches::operator<(const FeetInches &a) {
+    return !(*this > a) && !(*this == a);
+}
 
 // Overloaded ==
-bool FeetInches::operator==(const FeetInches &) {}
+bool FeetInches::operator==(const FeetInches &a) {
+    simplify();
+    return (feet == a.feet && inches == a.inches);
+}

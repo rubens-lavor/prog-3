@@ -4,7 +4,8 @@ LDFLAGS =
 
 
 APPNAME = over2
-EXT = .cpp .cc
+#EXT = .cpp
+EXT = .cc
 SRCDIR = .
 OBJDIR = .
 
