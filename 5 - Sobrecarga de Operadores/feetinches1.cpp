@@ -16,3 +16,8 @@ void FeetInches::simplify() {
         this->feet -= cont;
     }
 }
+
+FeetInches FeetInches::operator+(const FeetInches &a) {
+    return FeetInches(a.getFeet() + feet, a.getInches()+ inches);
+}  // Overloaded +
+FeetInches operator-(const FeetInches &a, const FeetInches &b) {}  // Overloaded -
