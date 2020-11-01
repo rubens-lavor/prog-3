@@ -10,35 +10,33 @@
  * Definição da estrutura de estatísticas de cestas e arremessos
  */
 typedef struct {
-	int 			cestas;
-	int 			arremessos;	
-	float			percentual;
+    int cestas;
+    int arremessos;
+    float percentual;
 } arremessos_t;
-
 
 /**
  * Definição da estrutura de informações de jogador
  */
 typedef struct {
-	char 			nome[128];   // Nome
-	int  			idade;       // Idade
-	char 			time[16]; 	 // Sigla do time
-	char 			posicao[8];	 // Sigla da posição	
-	int  			jogos; 		 // Número de jogos
-	int  			minutos;     // Número de minutos jogados
-	int 			pontos;      // Total de pontos feitos
-	
-	arremessos_t 	a2;			 // Estatísticas de arremessos de 2 pontos	
-	arremessos_t 	a3;			 // Estatísticas de arremessos de 3 pontos	
-	arremessos_t 	aT;			 // Estatística combinada de arremessos de 2 e 3 pontos	
-	arremessos_t 	aL;			 // Estatísticas de arremessos livres (lances livres)
+    char nome[128];   // Nome
+    int idade;        // Idade
+    char time[16];    // Sigla do time
+    char posicao[8];  // Sigla da posição
+    int jogos;        // Número de jogos
+    int minutos;      // Número de minutos jogados
+    int pontos;       // Total de pontos feitos
+
+    arremessos_t a2;  // Estatísticas de arremessos de 2 pontos
+    arremessos_t a3;  // Estatísticas de arremessos de 3 pontos
+    arremessos_t aT;  // Estatística combinada de arremessos de 2 e 3 pontos
+    arremessos_t aL;  // Estatísticas de arremessos livres (lances livres)
 } jogador_t;
 
 /******************************/
 /* Leitura do arquivo																	*/
 /******************************/
 
-		
 /**
  * @brief 	Leitura do cabeçario do arquivo
  * @details Lê o cabeçario de arquivo, ou seja, o número inteiro que especifica o número
@@ -48,17 +46,13 @@ typedef struct {
  * @return 		Retorna -1 se a string for nula; 0 se o arquivo não existe; O número de 
  * 				jogadores contindo no arquivo, se conseguir fazer a leitura
  */
-int 		le_cabecario				(char *nome){
+int le_cabecario(char *nome) {
     if (nome == NULL)
         return -1;
-    if (fclose(nome) == 0)    
+    if (fclose(nome) == 0)
         return 0;
-return 0; 
+    return 0;
 }
-
-
-	
-
 
 /**
  * @brief   Faz a leitura dos jogadores armazenados no arquivo
@@ -74,11 +68,10 @@ return 0;
  * 					 NULL. A função retorna um vetor alocado dinamicamente que contém as 
  * 					 informações dos jogadores, lidas do arquivo e seta njogadores
  */
-jogador_t* 	le_jogadores				(char *nome, int *njogadores){
-    for (int i = 0; i < strlen(nome);i++) 
-    nome[i] = nome[i];
+jogador_t *le_jogadores(char *nome, int *njogadores) {
+    for (int i = 0; i < strlen(nome); i++)
+        nome[i] = nome[i];
 }
-
 
 /******************************/
 /* Estatísticas de Jogadores (statj)													*/
@@ -102,8 +95,7 @@ jogador_t* 	le_jogadores				(char *nome, int *njogadores){
  * 					 especificado, se os parâmetros estiverem corretamente especificados. 
  * 					 Caso haja empates, retorna o menor índice que satisfaz a condição.
  */
-int 		statj_mais_arremessos		(jogador_t *jogadores, int njogadores, char tipo);
-
+int statj_mais_arremessos(jogador_t *jogadores, int njogadores, char tipo);
 
 /**
  * @brief   Estatísticas referentes ao maior número de cestas
@@ -123,8 +115,7 @@ int 		statj_mais_arremessos		(jogador_t *jogadores, int njogadores, char tipo);
  * 					 os parâmetros estiverem corretamente especificados. Caso haja empa-
  * 					 tes, retorna o menor índice que satisfaz a condição.
  */
-int 		statj_mais_cestas			(jogador_t *jogadores, int njogadores, char tipo);
-
+int statj_mais_cestas(jogador_t *jogadores, int njogadores, char tipo);
 
 /**
  * @brief   Estatísticas referentes ao melhor percentual de cestas/arremessos
@@ -144,8 +135,7 @@ int 		statj_mais_cestas			(jogador_t *jogadores, int njogadores, char tipo);
  * 					 os parâmetros estiverem corretamente especificados. Caso haja empa-
  * 					 tes, retorna o menor índice que satisfaz a condição.
  */
-int 		statj_melhor_percentual		(jogador_t *jogadores, int njogadores, char tipo);
-
+int statj_melhor_percentual(jogador_t *jogadores, int njogadores, char tipo);
 
 /**
  * @brief   Estatísticas referentes ao número de jogos
@@ -162,8 +152,7 @@ int 		statj_melhor_percentual		(jogador_t *jogadores, int njogadores, char tipo)
  * 					 retorna -2. Retorna o índice do jogador com maior/menor número de jogos. 
  *                   Caso haja empate retorna o menor índice que satisfaz a condição.
  */
-int 		statj_jogos					(jogador_t *jogadores, int njogadores, char tipo);
-
+int statj_jogos(jogador_t *jogadores, int njogadores, char tipo);
 
 /**
  * @brief   Estatísticas referentes à idade
@@ -180,8 +169,7 @@ int 		statj_jogos					(jogador_t *jogadores, int njogadores, char tipo);
  * 					 retorna -2. Retorna o índice do jogador com maior/menor idade. 
  *                   Caso haja empate retorna o menor índice que satisfaz a condição.
  */
-int 		statj_idade					(jogador_t *jogadores, int njogadores, char tipo);
-
+int statj_idade(jogador_t *jogadores, int njogadores, char tipo);
 
 /**
  * @brief   Estatísticas referentes à minutos jogados
@@ -198,8 +186,7 @@ int 		statj_idade					(jogador_t *jogadores, int njogadores, char tipo);
  * 					 retorna -2. Retorna o índice do jogador com mais/menos minutos.
  *                   Caso haja empate retorna o menor índice que satisfaz a condição.
  */
-int 		statj_minutos				(jogador_t *jogadores, int njogadores, char tipo);
-
+int statj_minutos(jogador_t *jogadores, int njogadores, char tipo);
 
 /**
  * @brief   Estatísticas referentes à pontos
@@ -216,8 +203,7 @@ int 		statj_minutos				(jogador_t *jogadores, int njogadores, char tipo);
  * 					 retorna -2. Retorna o índice do jogador com mais/menos pontos.
  *                   Caso haja empate retorna o menor índice que satisfaz a condição.
  */
-int 		statj_pontos				(jogador_t *jogadores, int njogadores, char tipo);
-
+int statj_pontos(jogador_t *jogadores, int njogadores, char tipo);
 
 /******************************/
 /* Estatísticas de Times (statt)												     	*/
@@ -234,8 +220,7 @@ int 		statj_pontos				(jogador_t *jogadores, int njogadores, char tipo);
  *                   feita pelos jogadores do time especificado. Se o nome do time for in-
  *                   válido (time sem jogadores), retorna 0.
  */
-int 		statt_soma_pontos			(jogador_t jogadores, int njogadores, char time);
-
+int statt_soma_pontos(jogador_t jogadores, int njogadores, char time);
 
 /**
  * @brief   Média de pontos dos jogadores de um time
@@ -248,8 +233,7 @@ int 		statt_soma_pontos			(jogador_t jogadores, int njogadores, char time);
  *                   feita pelos jogadores do time especificado. Se o nome do time for in-
  *                   válido (time sem jogadores), retorna 0.
  */
-float 		statt_media_pontos			(jogador_t jogadores, int njogadores, char time);
-
+float statt_media_pontos(jogador_t jogadores, int njogadores, char time);
 
 /**
  * @brief   Média de idade dos jogadores de um time
@@ -262,8 +246,7 @@ float 		statt_media_pontos			(jogador_t jogadores, int njogadores, char time);
  *                   dos jogadores do time especificado. Se o nome do time for inválido 
  *                   (time sem jogadores), retorna 0.
  */
-float 		statt_media_idade			(jogador_t jogadores, int njogadores, char time);
-
+float statt_media_idade(jogador_t jogadores, int njogadores, char time);
 
 /**
  * @brief   Número de jogadores de uma posição no time
@@ -277,6 +260,6 @@ float 		statt_media_idade			(jogador_t jogadores, int njogadores, char time);
  * 					 de jogadores de uma dada posição que o time possui. Se o nome do time 
  * 					 ou posição forem inválidos (não estiverem no arquivo), retorna 0.
  */
-int 		statt_posicao				(jogador_t jogadores, int njogadores, char *time, char posicao);
+int statt_posicao(jogador_t jogadores, int njogadores, char *time, char posicao);
 
 #endif
