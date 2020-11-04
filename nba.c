@@ -47,11 +47,17 @@ typedef struct {
  * 				jogadores contindo no arquivo, se conseguir fazer a leitura
  */
 int le_cabecario(char *nome) {
-    if (nome == NULL)
-        return -1;
-    if (fclose(nome) == 0)
-        return 0;
-    return 0;
+   if(nome == NULL){
+		return -1;
+	}
+	
+	FILE* pont = fopen(nome,"r");
+	
+	if(pont == NULL){
+		return 0;
+	}
+	
+    /*ler a quantidde de jogadores*/
 }
 
 /**
