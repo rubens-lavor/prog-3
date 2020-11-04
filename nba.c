@@ -47,16 +47,16 @@ typedef struct {
  * 				jogadores contindo no arquivo, se conseguir fazer a leitura
  */
 int le_cabecario(char *nome) {
-   if(nome == NULL){
-		return -1;
-	}
-	
-	FILE* pont = fopen(nome,"r");
-	
-	if(pont == NULL){
-		return 0;
-	}
-	
+    if (nome == NULL) {
+        return -1;
+    }
+
+    FILE *pont = fopen(nome, "r");
+
+    if (pont == NULL) {
+        return 0;
+    }
+
     /*ler a quantidde de jogadores*/
 }
 
@@ -75,8 +75,46 @@ int le_cabecario(char *nome) {
  * 					 informações dos jogadores, lidas do arquivo e seta njogadores
  */
 jogador_t *le_jogadores(char *nome, int *njogadores) {
-    for (int i = 0; i < strlen(nome); i++)
-        nome[i] = nome[i];
+    if (njogadores == NULL || nome == NULL) {
+        return NULL;
+    }
+
+    FILE *ptr;
+
+    ptr = abre_nome(nome);
+
+    if (ptr == NULL) return NULL;
+
+    double *armazena, aux;
+
+    *njogadores = 0;
+
+    if (fscanf(ptr, "%lf", &aux) == EOF) {
+        fclose(ptr);
+        return NULL;
+    }
+
+    rewind(ptr);
+
+    fscanf(ptr, "%lf", &aux);
+
+    while (!feof(ptr)) {
+        *njogadores += 1;
+        fscanf(ptr, "%lf", &aux);
+    }
+
+    armazena = (double *)malloc(sizeof(double) * *njogadores);
+
+    if (armazena == NULL) return NULL;
+
+    rewind(ptr);
+
+    for (int i = 0; i < *njogadores; i++) {
+        fscanf(ptr, "%lf", &aux);
+        armazena[i] = aux;
+    }
+
+    return armazena;
 }
 
 /******************************/
