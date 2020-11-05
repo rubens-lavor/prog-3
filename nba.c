@@ -139,46 +139,67 @@ jogador_t *le_jogadores(char *nome, int *njogadores) {
  * 					 especificado, se os parâmetros estiverem corretamente especificados. 
  * 					 Caso haja empates, retorna o menor índice que satisfaz a condição.
  */
-int statj_mais_arremessos(jogador_t *jogadores, int njogadores, char tipo){
+int statj_mais_arremessos(jogador_t *jogadores, int njogadores, char tipo) {
     int statj_mais_arremessos = 0;
-    int tipoInt = 0;
-    int i;
+    int indice = 0;
+    int i = 0;
 
     if (jogadores == NULL) {
         return -1;
     }
 
-    switch (tipo)
-    {
-    case '2':
-        tipoInt = 
-        break;
-    
-    case '3':
-        /* code */
-        break;
+    switch (tipo) {
+        case '2':
+            statj_mais_arremessos = jogadores[0].a2.arremessos;
 
-    case 'aT':
-        /* code */
-        break;
+            for (i = 1; i < njogadores; i++) {
+                if (statj_mais_arremessos < jogadores[i].a2.arremessos) {
+                    statj_mais_arremessos = jogadores[i].a2.arremessos;
+                    indice = i;
+                }
+            }
 
-    case 'aL':
-        /* code */
-        break;
-    
-    default:
-        break;
+            break;
+
+        case '3':
+            statj_mais_arremessos = jogadores[0].a3.arremessos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_mais_arremessos < jogadores[i].a3.arremessos) {
+                    statj_mais_arremessos = jogadores[i].a3.arremessos;
+                    indice = i;
+                }
+            }
+            break;
+
+        case 'T':
+            statj_mais_arremessos = jogadores[0].aT.arremessos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_mais_arremessos < jogadores[i].aT.arremessos) {
+                    statj_mais_arremessos = jogadores[i].aT.arremessos;
+                    indice = i;
+                }
+            }
+            break;
+
+        case 'L':
+            statj_mais_arremessos = jogadores[0].aL.arremessos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_mais_arremessos < jogadores[i].aL.arremessos) {
+                    statj_mais_arremessos = jogadores[i].aL.arremessos;
+                    indice = i;
+                }
+            }
+            break;
+
+        default:
+            return -2;
+            break;
     }
 
-    statj_mais_arremessos = jogadores[0].a2.arremessos;
-
-    for (i = 1; i < njogadores; i++) {
-        if (maior < jogadores[i]) {
-            maior = jogadores[i];
-        }
-    }
-
-    return statj_mais_arremessos;
+    return indice;
 }
 
 /**
