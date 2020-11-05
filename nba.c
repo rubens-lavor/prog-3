@@ -220,7 +220,68 @@ int statj_mais_arremessos(jogador_t *jogadores, int njogadores, char tipo) {
  * 					 os parâmetros estiverem corretamente especificados. Caso haja empa-
  * 					 tes, retorna o menor índice que satisfaz a condição.
  */
-int statj_mais_cestas(jogador_t *jogadores, int njogadores, char tipo);
+int statj_mais_cestas(jogador_t *jogadores, int njogadores, char tipo){
+    int statj_mais_cestas = 0;
+    int indice = 0;
+    int i = 0;
+
+    if (jogadores == NULL) {
+        return -1;
+    }
+
+    switch (tipo) {
+        case '2':
+            statj_mais_cestas = jogadores[0].a2.cestas;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_mais_cestas < jogadores[i].a2.cestas) {
+                    statj_mais_cestas = jogadores[i].a2.cestas;
+                    indice = i;
+                }
+            }
+
+            break;
+
+        case '3':
+            statj_mais_cestas = jogadores[0].a3.cestas;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_mais_cestas < jogadores[i].a3.cestas) {
+                    statj_mais_cestas = jogadores[i].a3.cestas;
+                    indice = i;
+                }
+            }
+            break;
+
+        case 'T':
+            statj_mais_cestas = jogadores[0].aT.cestas;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_mais_cestas < jogadores[i].aT.cestas) {
+                    statj_mais_cestas = jogadores[i].aT.cestas;
+                    indice = i;
+                }
+            }
+            break;
+
+        case 'L':
+            statj_mais_cestas = jogadores[0].aL.cestas;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_mais_cestas < jogadores[i].aL.cestas) {
+                    statj_mais_cestas = jogadores[i].aL.cestas;
+                    indice = i;
+                }
+            }
+            break;
+
+        default:
+            return -2;
+            break;
+    }
+
+    return indice;
+}
 
 /**
  * @brief   Estatísticas referentes ao melhor percentual de cestas/arremessos
