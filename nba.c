@@ -139,7 +139,47 @@ jogador_t *le_jogadores(char *nome, int *njogadores) {
  * 					 especificado, se os parâmetros estiverem corretamente especificados. 
  * 					 Caso haja empates, retorna o menor índice que satisfaz a condição.
  */
-int statj_mais_arremessos(jogador_t *jogadores, int njogadores, char tipo);
+int statj_mais_arremessos(jogador_t *jogadores, int njogadores, char tipo){
+    int statj_mais_arremessos = 0;
+    int tipoInt = 0;
+    int i;
+
+    if (jogadores == NULL) {
+        return -1;
+    }
+
+    switch (tipo)
+    {
+    case '2':
+        tipoInt = 
+        break;
+    
+    case '3':
+        /* code */
+        break;
+
+    case 'aT':
+        /* code */
+        break;
+
+    case 'aL':
+        /* code */
+        break;
+    
+    default:
+        break;
+    }
+
+    statj_mais_arremessos = jogadores[0].a2.arremessos;
+
+    for (i = 1; i < njogadores; i++) {
+        if (maior < jogadores[i]) {
+            maior = jogadores[i];
+        }
+    }
+
+    return statj_mais_arremessos;
+}
 
 /**
  * @brief   Estatísticas referentes ao maior número de cestas
