@@ -603,7 +603,46 @@ int statj_pontos(jogador_t *jogadores, int njogadores, char tipo){
  *                   feita pelos jogadores do time especificado. Se o nome do time for in-
  *                   válido (time sem jogadores), retorna 0.
  */
-int statt_soma_pontos(jogador_t jogadores, int njogadores, char time);
+int statt_soma_pontos(jogador_t jogadores, int njogadores, char time){
+    int statj_minutos = 0;
+    int indice = 0;
+    int i = 0;
+
+    if (&jogadores == NULL) {
+        return -1;
+    }
+
+    switch (time) {
+        case '+':
+            statj_minutos = jogadores.minutos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_minutos < jogadores.minutos) {
+                    statj_minutos = jogadores.minutos;
+                    indice = i;
+                }
+            }
+
+            break;
+
+        case '-':
+            statj_minutos = jogadores.minutos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_minutos > jogadores.minutos) {
+                    statj_minutos = jogadores.minutos;
+                    indice = i;
+                }
+            }
+            break;
+
+        default:
+            return -2;
+            break;
+    }
+
+    return indice;
+}
 
 /**
  * @brief   Média de pontos dos jogadores de um time
