@@ -435,7 +435,7 @@ int statj_jogos(jogador_t *jogadores, int njogadores, char tipo) {
  * 					 retorna -2. Retorna o índice do jogador com maior/menor idade. 
  *                   Caso haja empate retorna o menor índice que satisfaz a condição.
  */
-int statj_idade(jogador_t *jogadores, int njogadores, char tipo){
+int statj_idade(jogador_t *jogadores, int njogadores, char tipo) {
     int statj_idade = 0;
     int indice = 0;
     int i = 0;
@@ -491,7 +491,7 @@ int statj_idade(jogador_t *jogadores, int njogadores, char tipo){
  * 					 retorna -2. Retorna o índice do jogador com mais/menos minutos.
  *                   Caso haja empate retorna o menor índice que satisfaz a condição.
  */
-int statj_minutos(jogador_t *jogadores, int njogadores, char tipo){
+int statj_minutos(jogador_t *jogadores, int njogadores, char tipo) {
     int statj_minutos = 0;
     int indice = 0;
     int i = 0;
@@ -547,7 +547,7 @@ int statj_minutos(jogador_t *jogadores, int njogadores, char tipo){
  * 					 retorna -2. Retorna o índice do jogador com mais/menos pontos.
  *                   Caso haja empate retorna o menor índice que satisfaz a condição.
  */
-int statj_pontos(jogador_t *jogadores, int njogadores, char tipo){
+int statj_pontos(jogador_t *jogadores, int njogadores, char tipo) {
     int statj_pontos = 0;
     int indice = 0;
     int i = 0;
@@ -603,7 +603,7 @@ int statj_pontos(jogador_t *jogadores, int njogadores, char tipo){
  *                   feita pelos jogadores do time especificado. Se o nome do time for in-
  *                   válido (time sem jogadores), retorna 0.
  */
-int statt_soma_pontos(jogador_t jogadores, int njogadores, char time){
+int statt_soma_pontos(jogador_t jogadores, int njogadores, char time) {
     int statj_minutos = 0;
     int indice = 0;
     int i = 0;
@@ -655,7 +655,7 @@ int statt_soma_pontos(jogador_t jogadores, int njogadores, char time){
  *                   feita pelos jogadores do time especificado. Se o nome do time for in-
  *                   válido (time sem jogadores), retorna 0.
  */
-float statt_media_pontos(jogador_t jogadores, int njogadores, char time){
+float statt_media_pontos(jogador_t jogadores, int njogadores, char time) {
     int statj_minutos = 0;
     int indice = 0;
     int i = 0;
@@ -707,7 +707,7 @@ float statt_media_pontos(jogador_t jogadores, int njogadores, char time){
  *                   dos jogadores do time especificado. Se o nome do time for inválido 
  *                   (time sem jogadores), retorna 0.
  */
-float statt_media_idade(jogador_t jogadores, int njogadores, char time){
+float statt_media_idade(jogador_t jogadores, int njogadores, char time) {
     int statj_minutos = 0;
     int indice = 0;
     int i = 0;
@@ -760,7 +760,7 @@ float statt_media_idade(jogador_t jogadores, int njogadores, char time){
  * 					 de jogadores de uma dada posição que o time possui. Se o nome do time 
  * 					 ou posição forem inválidos (não estiverem no arquivo), retorna 0.
  */
-int statt_posicao(jogador_t jogadores, int njogadores, char *time, char posicao){
+int statt_posicao(jogador_t jogadores, int njogadores, char *time, char posicao) {
     int statj_minutos = 0;
     int indice = 0;
     int i = 0;
