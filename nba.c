@@ -380,7 +380,7 @@ int statj_melhor_percentual(jogador_t *jogadores, int njogadores, char tipo) {
  *                   Caso haja empate retorna o menor índice que satisfaz a condição.
  */
 int statj_jogos(jogador_t *jogadores, int njogadores, char tipo) {
-    float statj_jogos = 0.0;
+    int statj_jogos = 0;
     int indice = 0;
     int i = 0;
 
@@ -436,7 +436,7 @@ int statj_jogos(jogador_t *jogadores, int njogadores, char tipo) {
  *                   Caso haja empate retorna o menor índice que satisfaz a condição.
  */
 int statj_idade(jogador_t *jogadores, int njogadores, char tipo){
-    float statj_idade = 0.0;
+    int statj_idade = 0;
     int indice = 0;
     int i = 0;
 
@@ -491,7 +491,46 @@ int statj_idade(jogador_t *jogadores, int njogadores, char tipo){
  * 					 retorna -2. Retorna o índice do jogador com mais/menos minutos.
  *                   Caso haja empate retorna o menor índice que satisfaz a condição.
  */
-int statj_minutos(jogador_t *jogadores, int njogadores, char tipo);
+int statj_minutos(jogador_t *jogadores, int njogadores, char tipo){
+    int statj_minutos = 0;
+    int indice = 0;
+    int i = 0;
+
+    if (jogadores == NULL) {
+        return -1;
+    }
+
+    switch (tipo) {
+        case '+':
+            statj_minutos = jogadores[0].minutos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_minutos < jogadores[i].minutos) {
+                    statj_minutos = jogadores[i].minutos;
+                    indice = i;
+                }
+            }
+
+            break;
+
+        case '-':
+            statj_minutos = jogadores[0].minutos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_minutos > jogadores[i].minutos) {
+                    statj_minutos = jogadores[i].minutos;
+                    indice = i;
+                }
+            }
+            break;
+
+        default:
+            return -2;
+            break;
+    }
+
+    return indice;
+}
 
 /**
  * @brief   Estatísticas referentes à pontos
@@ -508,7 +547,46 @@ int statj_minutos(jogador_t *jogadores, int njogadores, char tipo);
  * 					 retorna -2. Retorna o índice do jogador com mais/menos pontos.
  *                   Caso haja empate retorna o menor índice que satisfaz a condição.
  */
-int statj_pontos(jogador_t *jogadores, int njogadores, char tipo);
+int statj_pontos(jogador_t *jogadores, int njogadores, char tipo){
+    int statj_pontos = 0;
+    int indice = 0;
+    int i = 0;
+
+    if (jogadores == NULL) {
+        return -1;
+    }
+
+    switch (tipo) {
+        case '+':
+            statj_pontos = jogadores[0].pontos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_pontos < jogadores[i].pontos) {
+                    statj_pontos = jogadores[i].pontos;
+                    indice = i;
+                }
+            }
+
+            break;
+
+        case '-':
+            statj_pontos = jogadores[0].pontos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_pontos > jogadores[i].pontos) {
+                    statj_pontos = jogadores[i].pontos;
+                    indice = i;
+                }
+            }
+            break;
+
+        default:
+            return -2;
+            break;
+    }
+
+    return indice;
+}
 
 /******************************/
 /* Estatísticas de Times (statt)												     	*/
