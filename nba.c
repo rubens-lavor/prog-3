@@ -220,7 +220,7 @@ int statj_mais_arremessos(jogador_t *jogadores, int njogadores, char tipo) {
  * 					 os parâmetros estiverem corretamente especificados. Caso haja empa-
  * 					 tes, retorna o menor índice que satisfaz a condição.
  */
-int statj_mais_cestas(jogador_t *jogadores, int njogadores, char tipo){
+int statj_mais_cestas(jogador_t *jogadores, int njogadores, char tipo) {
     int statj_mais_cestas = 0;
     int indice = 0;
     int i = 0;
@@ -301,7 +301,68 @@ int statj_mais_cestas(jogador_t *jogadores, int njogadores, char tipo){
  * 					 os parâmetros estiverem corretamente especificados. Caso haja empa-
  * 					 tes, retorna o menor índice que satisfaz a condição.
  */
-int statj_melhor_percentual(jogador_t *jogadores, int njogadores, char tipo);
+int statj_melhor_percentual(jogador_t *jogadores, int njogadores, char tipo) {
+    float statj_melhor_percentual = 0.0;
+    int indice = 0;
+    int i = 0;
+
+    if (jogadores == NULL) {
+        return -1;
+    }
+
+    switch (tipo) {
+        case '2':
+            statj_melhor_percentual = jogadores[0].a2.percentual;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_melhor_percentual < jogadores[i].a2.percentual) {
+                    statj_melhor_percentual = jogadores[i].a2.percentual;
+                    indice = i;
+                }
+            }
+
+            break;
+
+        case '3':
+            statj_melhor_percentual = jogadores[0].a3.percentual;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_melhor_percentual < jogadores[i].a3.percentual) {
+                    statj_melhor_percentual = jogadores[i].a3.percentual;
+                    indice = i;
+                }
+            }
+            break;
+
+        case 'T':
+            statj_melhor_percentual = jogadores[0].aT.percentual;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_melhor_percentual < jogadores[i].aT.percentual) {
+                    statj_melhor_percentual = jogadores[i].aT.percentual;
+                    indice = i;
+                }
+            }
+            break;
+
+        case 'L':
+            statj_melhor_percentual = jogadores[0].aL.percentual;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_melhor_percentual < jogadores[i].aL.percentual) {
+                    statj_melhor_percentual = jogadores[i].aL.percentual;
+                    indice = i;
+                }
+            }
+            break;
+
+        default:
+            return -2;
+            break;
+    }
+
+    return indice;
+}
 
 /**
  * @brief   Estatísticas referentes ao número de jogos
@@ -318,7 +379,46 @@ int statj_melhor_percentual(jogador_t *jogadores, int njogadores, char tipo);
  * 					 retorna -2. Retorna o índice do jogador com maior/menor número de jogos. 
  *                   Caso haja empate retorna o menor índice que satisfaz a condição.
  */
-int statj_jogos(jogador_t *jogadores, int njogadores, char tipo);
+int statj_jogos(jogador_t *jogadores, int njogadores, char tipo) {
+    float statj_jogos = 0.0;
+    int indice = 0;
+    int i = 0;
+
+    if (jogadores == NULL) {
+        return -1;
+    }
+
+    switch (tipo) {
+        case '+':
+            statj_jogos = jogadores[0].jogos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_jogos < jogadores[i].jogos) {
+                    statj_jogos = jogadores[i].jogos;
+                    indice = i;
+                }
+            }
+
+            break;
+
+        case '-':
+            statj_jogos = jogadores[0].jogos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_jogos > jogadores[i].jogos) {
+                    statj_jogos = jogadores[i].jogos;
+                    indice = i;
+                }
+            }
+            break;
+
+        default:
+            return -2;
+            break;
+    }
+
+    return indice;
+}
 
 /**
  * @brief   Estatísticas referentes à idade
@@ -335,7 +435,46 @@ int statj_jogos(jogador_t *jogadores, int njogadores, char tipo);
  * 					 retorna -2. Retorna o índice do jogador com maior/menor idade. 
  *                   Caso haja empate retorna o menor índice que satisfaz a condição.
  */
-int statj_idade(jogador_t *jogadores, int njogadores, char tipo);
+int statj_idade(jogador_t *jogadores, int njogadores, char tipo){
+    float statj_idade = 0.0;
+    int indice = 0;
+    int i = 0;
+
+    if (jogadores == NULL) {
+        return -1;
+    }
+
+    switch (tipo) {
+        case '+':
+            statj_idade = jogadores[0].idade;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_idade < jogadores[i].idade) {
+                    statj_idade = jogadores[i].idade;
+                    indice = i;
+                }
+            }
+
+            break;
+
+        case '-':
+            statj_idade = jogadores[0].idade;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_idade > jogadores[i].idade) {
+                    statj_idade = jogadores[i].idade;
+                    indice = i;
+                }
+            }
+            break;
+
+        default:
+            return -2;
+            break;
+    }
+
+    return indice;
+}
 
 /**
  * @brief   Estatísticas referentes à minutos jogados
