@@ -655,7 +655,46 @@ int statt_soma_pontos(jogador_t jogadores, int njogadores, char time){
  *                   feita pelos jogadores do time especificado. Se o nome do time for in-
  *                   válido (time sem jogadores), retorna 0.
  */
-float statt_media_pontos(jogador_t jogadores, int njogadores, char time);
+float statt_media_pontos(jogador_t jogadores, int njogadores, char time){
+    int statj_minutos = 0;
+    int indice = 0;
+    int i = 0;
+
+    if (&jogadores == NULL) {
+        return -1;
+    }
+
+    switch (time) {
+        case '+':
+            statj_minutos = jogadores.minutos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_minutos < jogadores.minutos) {
+                    statj_minutos = jogadores.minutos;
+                    indice = i;
+                }
+            }
+
+            break;
+
+        case '-':
+            statj_minutos = jogadores.minutos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_minutos > jogadores.minutos) {
+                    statj_minutos = jogadores.minutos;
+                    indice = i;
+                }
+            }
+            break;
+
+        default:
+            return -2;
+            break;
+    }
+
+    return indice;
+}
 
 /**
  * @brief   Média de idade dos jogadores de um time
@@ -668,7 +707,46 @@ float statt_media_pontos(jogador_t jogadores, int njogadores, char time);
  *                   dos jogadores do time especificado. Se o nome do time for inválido 
  *                   (time sem jogadores), retorna 0.
  */
-float statt_media_idade(jogador_t jogadores, int njogadores, char time);
+float statt_media_idade(jogador_t jogadores, int njogadores, char time){
+    int statj_minutos = 0;
+    int indice = 0;
+    int i = 0;
+
+    if (&jogadores == NULL) {
+        return -1;
+    }
+
+    switch (time) {
+        case '+':
+            statj_minutos = jogadores.minutos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_minutos < jogadores.minutos) {
+                    statj_minutos = jogadores.minutos;
+                    indice = i;
+                }
+            }
+
+            break;
+
+        case '-':
+            statj_minutos = jogadores.minutos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_minutos > jogadores.minutos) {
+                    statj_minutos = jogadores.minutos;
+                    indice = i;
+                }
+            }
+            break;
+
+        default:
+            return -2;
+            break;
+    }
+
+    return indice;
+}
 
 /**
  * @brief   Número de jogadores de uma posição no time
@@ -682,6 +760,45 @@ float statt_media_idade(jogador_t jogadores, int njogadores, char time);
  * 					 de jogadores de uma dada posição que o time possui. Se o nome do time 
  * 					 ou posição forem inválidos (não estiverem no arquivo), retorna 0.
  */
-int statt_posicao(jogador_t jogadores, int njogadores, char *time, char posicao);
+int statt_posicao(jogador_t jogadores, int njogadores, char *time, char posicao){
+    int statj_minutos = 0;
+    int indice = 0;
+    int i = 0;
+
+    if (&jogadores == NULL) {
+        return -1;
+    }
+
+    switch (posicao) {
+        case '+':
+            statj_minutos = jogadores.minutos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_minutos < jogadores.minutos) {
+                    statj_minutos = jogadores.minutos;
+                    indice = i;
+                }
+            }
+
+            break;
+
+        case '-':
+            statj_minutos = jogadores.minutos;
+
+            for (i = 1; i < njogadores; i++) {
+                if (statj_minutos > jogadores.minutos) {
+                    statj_minutos = jogadores.minutos;
+                    indice = i;
+                }
+            }
+            break;
+
+        default:
+            return -2;
+            break;
+    }
+
+    return indice;
+}
 
 #endif
