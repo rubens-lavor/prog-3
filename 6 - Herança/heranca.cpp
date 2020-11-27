@@ -12,26 +12,30 @@ derivada
 using namespace std;
 
 class Person {
-   public:
+   protected:
     string m_name;
     int m_age;
+
+   public:
     Person(string name = "", int age = 0)
         //construtor em lista
         : m_name(name), m_age(age) {
     }
     string getName() const { return m_name; }
+    void setName(string nome) { m_name = nome; }
     int getAge() const { return m_age; }
 };
 
 /*Classe BaseballPlayer herdou pblicamente de Person*/
 class BaseballPlayer : public Person {
-   public:
+   protected:
     double m_battingAverage;
     int m_homeRuns;
-
+    
+    public:
     BaseballPlayer(double battingAverage = 0.0, int homeRuns = 0)
         //lista de inicializacao do construtor tem que ter : no inicio
-        : m_battingAverage(battingAverage), m_homeRuns(homeRuns) {
+        : m_battingAverage(battingAverage), m_homeRuns(homeRuns), Person() {
     }
     void imprime() {
         // Cout do nome
@@ -43,6 +47,7 @@ class BaseballPlayer : public Person {
         cout << "Rebatidas: " << m_battingAverage << '\n';  //
         cout << "Home Runs: " << m_homeRuns << '\n';
     }
+
 };
 
 int main() {
@@ -50,7 +55,7 @@ int main() {
     BaseballPlayer joe;
     // Nomeia o jogador utilizando atributo m_name da classe BASE. Note que esse parametro
     //esta publico para a classe derivada
-    joe.m_name = "Joe";
+    joe.setName("Joe");
     joe.imprime();
     return 0;
 }
