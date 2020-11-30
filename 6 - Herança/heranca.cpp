@@ -24,6 +24,9 @@ class Person {
     string getName() const { return m_name; }
     void setName(string nome) { m_name = nome; }
     int getAge() const { return m_age; }
+
+    friend ostream &operator<<(ostream &, const Person &);
+    friend istream &operator>>(istream &, Person &);
 };
 
 /*Classe BaseballPlayer herdou pblicamente de Person*/
@@ -31,8 +34,8 @@ class BaseballPlayer : public Person {
    protected:
     double m_battingAverage;
     int m_homeRuns;
-    
-    public:
+
+   public:
     BaseballPlayer(double battingAverage = 0.0, int homeRuns = 0)
         //lista de inicializacao do construtor tem que ter : no inicio
         : m_battingAverage(battingAverage), m_homeRuns(homeRuns), Person() {
@@ -48,15 +51,33 @@ class BaseballPlayer : public Person {
         cout << "Home Runs: " << m_homeRuns << '\n';
     }
 
+    friend ostream &operator<<(ostream &, const BaseballPlayer &);
+    friend istream &operator>>(istream &, BaseballPlayer &);
 };
+
+// Function Prototypes for Overloaded Stream Operators
+ostream &operator<<(ostream &output, const BaseballPlayer &a) {
+    output <<a.getName()<< "\nRebatidas: "<< a.m_battingAverage  << "\n" << "Home Runs: " <<  a.m_homeRuns <<"\n" ;
+    return output;  // enables cout << first << second;
+}
+
+std::istream& operator>>(std::istream& in, BaseballPlayer& a) {
+    std::cout << "Qual é o nome?: ";
+    std::string name;
+    std::getline(std::cin, name);
+    a.setName(name);
+    return in;
+}
 
 int main() {
     // Cria um jogador joe
     BaseballPlayer joe;
     // Nomeia o jogador utilizando atributo m_name da classe BASE. Note que esse parametro
     //esta publico para a classe derivada
-    joe.setName("Joe");
-    joe.imprime();
+    //joe.setName("Joe");
+    cin >> joe;
+    cout << joe;
+    //joe.imprime();
     return 0;
 }
 
