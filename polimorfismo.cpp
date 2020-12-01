@@ -97,3 +97,41 @@ int main(void){
     return 0;
 }
 */
+
+/*
+class Base {
+    public:
+    virtual void show() = 0;
+};
+
+
+class Derived: public Base { };
+
+
+int main(void){
+
+    Derived q;
+    return 0;
+}
+*/
+
+class A {
+    public:
+    virtual void fun();
+
+};
+
+class B {
+    public:
+    void fun();
+
+};
+
+int main(){
+    int a = sizeof(A), b = sizeof(B);
+    if (a==b) cout << "a == b";
+    else if (a>b) cout << "a > b";
+    else cout << "a < b";
+    
+    return 0;
+}
