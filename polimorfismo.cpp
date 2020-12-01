@@ -115,6 +115,7 @@ int main(void){
 }
 */
 
+/*
 class A {
     public:
     virtual void fun();
@@ -133,5 +134,28 @@ int main(){
     else if (a>b) cout << "a > b";
     else cout << "a < b";
     
+    return 0;
+}
+*/
+
+class Base {
+    public:
+    int x;
+    void show() {cout <<"Em Base ";}
+};
+
+class Derived: public Base {
+    public:
+    void show() {cout <<"Em Derived ";}
+    Derived(){ x = 10; }
+};
+
+int main(void){
+
+    Base *bp,b;
+    Derived d;
+    bp = &d;
+    bp->show();
+    cout << bp->x;
     return 0;
 }
