@@ -1,4 +1,4 @@
-### O seminário teve como objetivo discutir e apresentar como diversas linguagens abordam o paradigma de orientação a objetos.
+### O seminário teve como objetivo discutir e apresentar de que forma outras linguagens abordam o paradigma de orientação a objetos.
 
 
 #### Link para o vídeo no youtube:
