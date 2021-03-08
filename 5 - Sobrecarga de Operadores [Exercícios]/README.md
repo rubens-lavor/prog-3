@@ -26,7 +26,7 @@
 
   ![img2](./img/over2_resultado.png)
 
-> *## Execício 3:
+> ## Execício 3:
 
   ![img3](./img/over3_resultado.png)
 
