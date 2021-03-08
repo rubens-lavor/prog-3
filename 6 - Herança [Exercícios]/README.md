@@ -1,5 +1,8 @@
+## Herança
 
-> Exercicios:
+---
+
+> ## Exercicios:
 
 1. modifique as classes para que os parametros sejam privados,
 mantendo as mesmas saidas na tela
