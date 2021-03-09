@@ -1,0 +1,38 @@
+[ok] Define a class for a type called CounterType/Contador. 
+[ok] An object of this type is used to count things, so it records a count that is a nonnegative whole number. 
+[ok] Include a mutator function that sets the counter to a count given as an argument. 
+[ok] Include member functions to increase the count by one and to decrease the count by one.
+[ok] Be sure that no member function allows the value of the counter to become negative. 
+[ok] Also, include a member function that returns the current count value and one that outputs the count. 
+[ok] Embed your class definition in a test program.
+ 
+//traduzido - google
+Defina uma classe para um tipo chamado CounterType.
+Um objeto desse tipo é usado para contar coisas, portanto, ele registra uma contagem que é um número inteiro não negativo.
+Inclui uma função modificadora que define o contador para uma contagem fornecida como um argumento.
+Inclua funções-membro para aumentar a contagem em um e diminuir a contagem em um.
+Certifique-se de que nenhuma função de membro permite que o valor do contador se torne negativo.
+Além disso, inclua uma função de membro que retorna o valor de contagem atual e outra que produz a contagem.
+Incorpore sua definição de classe em um programa de teste.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
