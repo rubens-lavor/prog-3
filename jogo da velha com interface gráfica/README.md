@@ -1,1 +1,0 @@
-### Jogo da velha com interfacce gráfica com SFML.
