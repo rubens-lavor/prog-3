@@ -30,6 +30,13 @@
 
 ---
 
+> ## 📂 Material complementar
+📗 apostila c++ moderno microsoft.pdf
+
+Disponível gratuitamente para download em: [docs.microsoft.com/pt-br/cpp/cpp/cpp-language-reference](https://docs.microsoft.com/pt-br/cpp/cpp/cpp-language-reference?view=msvc-160)
+
+---
+
 > ## 📂 Projeto Final - Operações Bancárias
 Este projeto teve como objetivo demonstrar os conceitos de orientação a objeto usando a linguagem C++; são eles: Classe, Encapsulamento, Agregação e Composição, Templates, Sobrecarga de operador, Herança e Polimorfismo.
 
