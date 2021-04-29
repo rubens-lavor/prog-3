@@ -1,5 +1,8 @@
 # Programação 3 
 
+## Ementa:
+Fundamentos da orientação a objetos: herança, herança múltipla, polimorfismo, encapsulamento, construtores e destrutores, associação. Sobrecarga de operadores. Programação genérica (metaprogramação estática).
+
 > ## 📂 Aulas 
 * aula 1 - bibliotecas gráficas e configuração do ambiente de desenvolvimento.
 * aula 2 - função lambda, arrays e ordenação.
@@ -16,12 +19,12 @@
 ---
 
 > ## 📂 Exercícios
-*  [1 - Fundamentos C++](./Exerc%C3%ADcios/1%20-%20Fundamentos%20C%2B%2B/README.md)
-*  [2 - Fundamentos POO](./Exerc%C3%ADcios/2%20-%20Fundamentos%20POO/README.md)
-*  [3 - Construtores e Destrutores](./Exerc%C3%ADcios/3%20-%20Construtores%20e%20Destrutores/README.md)
-*  [4 - Templates](./Exerc%C3%ADcios/4%20-%20Template/README.md)
-*  [5 - Sobrecarga de Operadores](./Exerc%C3%ADcios/5%20-%20Sobrecarga%20de%20Operadores/README.md)
-*  [6 - Herança](./Exerc%C3%ADcios/6%20-%20Herança/README.md)
+*  [1 - Fundamentos C++](./Exerc%C3%ADcios/1%20-%20Fundamentos%20C%2B%2B)
+*  [2 - Fundamentos POO](./Exerc%C3%ADcios/2%20-%20Fundamentos%20POO)
+*  [3 - Construtores e Destrutores](./Exerc%C3%ADcios/3%20-%20Construtores%20e%20Destrutores)
+*  [4 - Templates](./Exerc%C3%ADcios/4%20-%20Template)
+*  [5 - Sobrecarga de Operadores](./Exerc%C3%ADcios/5%20-%20Sobrecarga%20de%20Operadores)
+*  [6 - Herança](./Exerc%C3%ADcios/6%20-%20Herança)
 
 ---
 
@@ -31,9 +34,9 @@
 ---
 
 > ## 📂 Material complementar
-📗 apostila c++ moderno microsoft.pdf
+📗 C++ moderno microsoft.pdf
 
-Disponível gratuitamente para download em: [docs.microsoft.com/pt-br/cpp/cpp/cpp-language-reference](https://docs.microsoft.com/pt-br/cpp/cpp/cpp-language-reference?view=msvc-160)
+Documentação Microsoft para a linguagem C++. Disponível gratuitamente para download em: [docs.microsoft.com/pt-br/cpp/cpp/cpp-language-reference](https://docs.microsoft.com/pt-br/cpp/cpp/cpp-language-reference?view=msvc-160)
 
 ---
 
